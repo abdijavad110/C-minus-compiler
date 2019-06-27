@@ -21,6 +21,7 @@ def get_next_token():
     global tokens
     if token_number < len(tokens):
         token_number += 1
+        # print(tokens[token_number - 1].type, tokens[token_number - 1].name)
         return tokens[token_number - 1]
 
 

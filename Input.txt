@@ -1,8 +1,4 @@
-int a;
-
-int a(int a){}
-
-void main(void){
-    int a;
-    return;
+int d;
+void a(int d[]){
+    d = d + 2;
 }

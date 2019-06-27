@@ -11,41 +11,55 @@ def initialize_semantic_analyzer():
     depth = 0
     stack.clear()
     sym_table.clear()
+    return True
 
 
 def s_type(arg):
-    print(sym_table)
     stack.push(arg)
+    return True
 
 
 def s_add_id(arg):
-    print(sym_table)
     stack.push(arg)
+    return True
 
 
 def s_var():
-    print(sym_table)
-    if sym_table.is_duplicate_free(stack.get(), depth) \
-            and stack.get(1) != 'void':
-        sym_table.add('int', stack.get(), depth=depth)
+    if sym_table.is_duplicate_free(stack.get(), depth):
+        if stack.get(1) != 'void':
+            sym_table.add('int', stack.get(), depth=depth)
+        else:
+            print('illegal type of void')
     stack.pop(2)
+    return True
 
 
 def s_fun():
-    print(sym_table)
     global depth
     depth += 1
     if sym_table.is_duplicate_free(stack.get()):
         sym_table.add(stack.get(1), stack.get(), address=0)  # todo: function code address
     stack.pop(2)
+    return True
 
 
 def s_fun_finished():
-    print(sym_table)
     sym_table.method_changed()
     global depth
     depth = 0
+    return True
 
 
 def s_print_sym_table():
     print(sym_table)
+
+
+def s_check_id(a):
+    temp = sym_table.check_and_return_id(a)
+    if temp is None:
+        print(a + " is not defined")
+        return True
+    else:
+        pass        # todo: push id to semantic stack
+        return True
+

@@ -9,7 +9,7 @@ def first(non_terminal):
         'Program': ['eof', 'void', 'int'],
         'Declarationlist': ['eps', 'void', 'int'],
         'E1': [';', '['],
-        'E2': ['eps', '[]'],
+        'E2': ['eps', '['],
         'Compoundstmt': ['{'],
         'Statementlist': ['eps', 'switch', 'return', 'while', 'if', '{', ';', 'break', 'continue', 'id', '+', '-',
                           '(', 'num'],
@@ -49,7 +49,7 @@ def first(non_terminal):
         'Typespecifier': ['void', 'int'],
         'Params': ['void', 'int'],
         'BB': ['eps', 'id'],
-        'Paramlist': ['eps', '[]', ','],
+        'Paramlist': ['eps', '[', ','],
         'F1': ['eps', ','],
         'Declaration': ['void', 'int'],
         'AA': ['(', ';', '['],
@@ -306,7 +306,9 @@ def params():
 
 
 def BB():
+    tmp = cur_token_vec.name
     if case1('id'):
+        print("illegal type of void")
         while not (case2('Paramlist') and param_list()):
             error(2, 'Paramlist')
             if 'eps' not in first('Paramlist') and cur_token in follow('Paramlist'):
@@ -336,8 +338,11 @@ def F1():
             if 'eps' not in first('Typespecifier') and cur_token in follow('Typespecifier'):
                 error(3, 'Typespecifier')
                 break
+        s_add_id(cur_token_vec.name)
         if not case1('id'):
             error(1, 'id')
+        else:
+            s_var()
         while not (case2('E2') and E2()):
             error(2, 'E2')
             if 'eps' not in first('E2') and cur_token in follow('E2'):
@@ -355,8 +360,11 @@ def F1():
 
 
 def E2():
-    if case1('[]'):
-        return success()
+    if case1('['):
+        if case1(']'):
+            return success()
+        else:
+            error(1, ']')
     if case3('E2'):
         return success()
     return failure()
@@ -410,7 +418,7 @@ def statement():
 
 
 def expression():
-    if case1('id'):
+    if s_check_id(cur_token_vec.name) and case1('id'):
         while not (case2('EXEXEX') and EXEXEX()):
             error(2, 'EXEXEX')
             if 'eps' not in first('EXEXEX') and cur_token in follow('EXEXEX'):
@@ -658,7 +666,8 @@ def additive_expression():
                 error(3, 'F2')
                 break
         return success()
-    if case1('id'):
+    tmp = cur_token_vec.name
+    if case1('id') and s_check_id(tmp):
         while not (case2('Varcall') and var_call()):
             error(2, 'Varcall')
             if 'eps' not in first('Varcall') and cur_token in follow('Varcall'):
@@ -889,7 +898,8 @@ def term():
                 error(3, 'F3')
                 break
         return success()
-    if case1('id'):
+    tmp = cur_token_vec.name
+    if case1('id') and s_check_id(tmp):
         while not (case2('Varcall') and var_call()):
             error(2, 'Varcall')
             if 'eps' not in first('Varcall') and cur_token in follow('Varcall'):
@@ -914,7 +924,8 @@ def factor():
         if not case1(')'):
             error(1, ')')
         return success()
-    if case1('id'):
+    tmp = cur_token_vec.name
+    if case1('id') and s_check_id(tmp):
         while not (case2('Varcall') and var_call()):
             error(2, 'Varcall')
             if 'eps' not in first('Varcall') and cur_token in follow('Varcall'):
@@ -994,4 +1005,3 @@ if __name__ == '__main__':
     program()
     export_parse_tree()
     export_error_file()
-    s_print_sym_table()

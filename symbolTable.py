@@ -24,6 +24,12 @@ class SymbolTable:
     def __init__(self):
         self.array = []
 
+    def __str__(self):
+        string = ''
+        for i in self.array:
+            string += str(i)
+        return str(string)
+
     def add(self, e_type, e_id, depth=None, address=None):
         if depth is None:
             self.array.append(TableEntry(e_type, e_id, depth, address))
@@ -38,15 +44,18 @@ class SymbolTable:
         return True
 
     def method_changed(self):
+        deletes = []
         for entry in self.array:
             if entry.depth not in [0, None]:
-                self.array.remove(entry)
+                deletes.append(entry)
+        for entry in deletes:
+            self.array.remove(entry)
 
     def clear(self):
         self.array = []
 
-    def __str__(self):
-        string = ''
-        for i in self.array:
-            string += str(i)
-        return str(string)
+    def check_and_return_id(self, a):
+        for i in range(len(self.array)-1, -1, -1):
+            if self.array[i].depth is not None and self.array[i].e_id == a:
+                return self.array[i].address
+        return None
