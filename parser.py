@@ -1,5 +1,7 @@
 from Lexer import initialize_lexer, get_next_token
+from semantic import *
 import sys
+
 
 # first - follow - next_token
 def first(non_terminal):
@@ -197,7 +199,6 @@ def program():
 
 def declaration_list():
     if case2('Declaration') and declaration():
-        print(case2('Declarationlist'), declaration_list())
         while not (case2('Declarationlist') and declaration_list()):
             error(2, 'Declarationlist')
             if 'eps' not in first('Declarationlist') and cur_token in follow('Declarationlist'):
@@ -211,6 +212,7 @@ def declaration_list():
 
 def declaration():
     if case2('Typespecifier') and type_specifier():
+        s_add_id(cur_token_vec.name)
         if not case1('id'):
             error(1, 'id')
         while not (case2('AA') and AA()):
@@ -223,6 +225,7 @@ def declaration():
 
 
 def type_specifier():
+    s_type(cur_token)
     if case1('int') or case1('void'):
         return success()
     return failure()
@@ -232,11 +235,13 @@ def AA():
     if case2('Fundeclaration') and fun_declaration():
         return success()
     if case2('Vardeclaration') and var_declaration():
+        s_var()
         return success()
     return failure()
 
 
 def fun_declaration():
+    s_fun()
     if case1('('):
         while not(case2('Params') and params()):
             error(2, 'Params')
@@ -250,7 +255,9 @@ def fun_declaration():
             if 'eps' not in first('Params') and cur_token in follow('Params'):
                 error(3, 'Params')
                 break
+        s_fun_finished()
         return success()
+    s_fun_finished()
     return failure()
 
 
@@ -276,8 +283,12 @@ def E1():
 
 def params():
     if case1('int'):
+        s_type('int')
+        s_add_id(cur_token_vec.name)
         if not case1('id'):
             error(1, 'id')
+        else:
+            s_var()
         while not(case2('Paramlist') and param_list()):
             error(2, 'Paramlist')
             if 'eps' not in first('Paramlist') and cur_token in follow('Paramlist'):
@@ -983,3 +994,4 @@ if __name__ == '__main__':
     program()
     export_parse_tree()
     export_error_file()
+    s_print_sym_table()

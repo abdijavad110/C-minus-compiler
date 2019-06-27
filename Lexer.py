@@ -102,7 +102,7 @@ def handle_buffer(buffer):
 #        "cd!e = -7;\n\t\t}\n\t\telse\n\t\t{\n\t\t\t" \
 #        "b = a < cde;\n\t\t\t{cde = @2;\n\t\t}}\n\t\t" \
 #        "return;\n}"
-file = open("All Tests/Parser/Test Error - Parser.txt", "r")
+file = open("input.txt", "r")
 output_file = open("Output.txt", "w")
 error_file = open("Error.txt", "w")
 text = file.read()
