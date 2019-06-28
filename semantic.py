@@ -137,7 +137,7 @@ def s_switch_finished():
 #varcall -> [Expression] #
 def c_computeIndex():
     temp1 = sym_table.getTemp()
-    PB.addInstruction("MULT", "#" + 4, stack.get(), temp1)
+    PB.addInstruction("MULT", "#" + str(4), stack.get(), temp1)
     temp = sym_table.getTemp()
     PB.addInstruction("ADD", stack.get(1), temp1, temp)
     stack.pop(2)
@@ -167,7 +167,7 @@ def c_mult():
 
 #signedfactor -> - factor #?
 def c_negate():
-    PB.addInstruction("SUB", "#" + 0, stack.get(), stack.get())
+    PB.addInstruction("SUB", "#" + str(0), stack.get(), stack.get())
 
 
 #addop -> + #
