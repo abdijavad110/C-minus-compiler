@@ -31,13 +31,13 @@ Statement -> Compoundstmt.
 Statement -> Expressionstmt.
 
 Expressionstmt -> ; .
-Expressionstmt -> break _s break_ ;.
-Expressionstmt -> continue _s continue_ ;.
+Expressionstmt -> break _s break_ c_break;.
+Expressionstmt -> continue _s continue_ c_continue ;.
 Expressionstmt -> Expression ;.
 
-Selectionstmt -> if ( Expression ) Statement else Statement .
+Selectionstmt -> if ( Expression ) c_if1 Statement c_if2 else Statement c_if3 .
 
-Iterationstmt -> _while start_ while ( Expression ) Statement _while finished_ .
+Iterationstmt -> _while start_ while c_whileFirst ( Expression ) c_saveLabel Statement c_whileLast _while finished_ .
 
 Returnstmt -> return E3.
 

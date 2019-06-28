@@ -437,11 +437,13 @@ def expression_stmt():
         return success()
     if case1('break'):
         s_break()
+        c_break()
         if not case1(';'):
             error(1, ';')
         return success()
     if case1('continue'):
         s_continue()
+        c_continue()
         if not case1(';'):
             error(1, ';')
         return success()
@@ -496,6 +498,7 @@ def return_stmt():
 def iteration_stmt():
     s_while_start(cur_token_vec.line_number)
     if case1('while'):
+        c_whileFirst()
         if not case1('('):
             error(1, '(')
         while not (case2('Expression') and expression()):
@@ -504,11 +507,13 @@ def iteration_stmt():
                 error(3, 'Expression')
         if not case1(')'):
             error(1, ')')
+        c_saveLabel()
         while not (case2('Statement') and statement()):
             error(2, 'Statement')
             if 'eps' not in first('Statement') and cur_token in follow('Statement'):
                 error(3, 'Statement')
                 break
+        c_whileLast()
         s_while_finished()
         return success()
     return failure()
@@ -525,11 +530,13 @@ def selection_stmt():
                 break
         if not case1(')'):
             error(1, ')')
+        c_if1()
         while not (case2('Statement') and statement()):
             error(2, 'Statement')
             if 'eps' not in first('Statement') and cur_token in follow('Statement'):
                 error(3, 'Statement')
                 break
+        c_if2()
         if not case1('else'):
             error(1, 'else')
         while not (case2('Statement') and statement()):
@@ -537,6 +544,7 @@ def selection_stmt():
             if 'eps' not in first('Statement') and cur_token in follow('Statement'):
                 error(3, 'Statement')
                 break
+        c_if3()
         return success()
     return failure()
 

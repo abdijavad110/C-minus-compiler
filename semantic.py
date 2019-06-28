@@ -245,13 +245,18 @@ def c_whileLast():
 
 # If
 def c_if1():
+    stack.push(PB.line)
+    PB.insertDummy(1)
+
+
+def c_if2():
     PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
     stack.pop(2)
     stack.push(PB.line)
     PB.insertDummy(1)
 
 
-def c_if2():
+def c_if3():
     PB.setInstruction("JP", PB.line + 1, None, None, stack.get())
     # PB.insertDummy()
     stack.pop(1)
