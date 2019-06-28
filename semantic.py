@@ -242,8 +242,8 @@ def c_saveLabel():
 
 def c_whileLast():
     PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
-    PB.addInstruction("JP", stack.get(2), None, None)
     PB.setInstruction("JP", PB.line + 1, None, None, stack.get(2) - 1)
+    PB.addInstruction("JP", stack.get(2), None, None)
     stack.pop(3)
 
 

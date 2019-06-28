@@ -1,7 +1,0 @@
-void a(void){
-    int a;
-    int b;
-    while (a == 1){
-        b = a;
-    }
-}
