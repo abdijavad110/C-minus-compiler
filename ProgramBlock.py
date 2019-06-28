@@ -17,6 +17,15 @@ class ProgramBlock:
     def setInstruction(self, inst, i):
         self.array[i] = inst
 
+    def setInstruction(self, op, opr1, opr2, dest, i):
+        inst = Instruction(op, opr1, opr2, dest)
+        self.array[i] = inst
+
+
+    def insertDummy(self, num):
+        for _ in range(num):
+            self.addInstruction(None)
+
 class Instruction:
     def __init__(self):
         self.op

@@ -219,3 +219,41 @@ def c_assign():
     PB.addInstruction("ASSIGN", stack.get(), stack.get(1), None)
     stack.pop(2)
     stack.push(temp)
+
+#While
+def c_whileFirst():
+    PB.addInstruction("JP", PB.line + 2, None, None)
+    PB.insertDummy(2)
+    stack.push(PB.line)
+
+def c_saveLabel():
+    stack.push(PB.line)
+    PB.insertDummy(1)
+
+def c_whileLast():
+    PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
+    PB.addInstruction("JP", stack.get(2), None, None)
+    PB.setInstruction("JP", PB.line + 1, None , None, stack.get(2) - 1)
+    stack.pop(3)
+
+
+#If
+def c_if1():
+    PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
+    stack.pop(2)
+    stack.push(PB.line)
+    PB.insertDummy(1)
+
+def c_if2():
+    PB.setInstruction("JP", PB.line + 1, None, None, stack.get())
+    # PB.insertDummy()
+    stack.pop(1)
+
+
+#continue
+def c_continue():
+    PB.addInstruction("JP", stack.get(2), None, None)
+
+#break
+def c_break():
+    PB.addInstruction("JP", stack.get(2) - 1, None, None)
