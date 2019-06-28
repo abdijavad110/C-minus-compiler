@@ -1,4 +1,4 @@
 int d;
-void a(int d[]){
+void a(int a[], int c, int b){
     d = d + 2;
 }

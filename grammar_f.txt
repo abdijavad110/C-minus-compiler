@@ -1,0 +1,130 @@
+Program -> Declarationlist eof .
+
+Declarationlist -> Declaration Declarationlist.
+Declarationlist -> .
+
+Declaration -> Typespecifier _add id_ id AA.
+
+Typespecifier -> _type(void)_ void .
+Typespecifier -> _type(int)_ int .
+
+AA -> Fundeclaration.
+AA -> Vardeclaration _var_.
+
+Vardeclaration -> E1.
+
+Fundeclaration -> _fun_ ( Params ) Compoundstmt _fun finished_.
+
+E1 -> ;.
+E1 -> [ num ] ;.
+
+Compoundstmt -> { Declarationlist Statementlist } .
+
+Statementlist -> .
+Statementlist -> Statement Statementlist.
+
+Statement -> Switchstmt .
+Statement -> Returnstmt.
+Statement -> Iterationstmt.
+Statement -> Selectionstmt.
+Statement -> Compoundstmt.
+Statement -> Expressionstmt.
+
+Expressionstmt -> ; .
+Expressionstmt -> break ;.
+Expressionstmt -> continue ;.
+Expressionstmt -> Expression ;.
+
+Selectionstmt -> if ( Expression ) Statement else Statement .
+
+Iterationstmt -> while ( Expression ) Statement .
+
+Returnstmt -> return E3.
+
+E3 -> Expression ;.
+E3 -> ;.
+
+Switchstmt -> switch ( Expression ) { Casestmts Defaultstmt } .
+
+Casestmts -> Casestmt Casestmts.
+Casestmts -> .
+
+Casestmt -> case num : Statementlist .
+
+Defaultstmt -> default : Statementlist.
+Defaultstmt -> .
+
+Expression -> _check id_ id EXEXEX.
+Expression -> NewSimpleexpression.
+
+EXEXEX -> [ Expression ] EZEZEZ | = Expression | NewVarcall F3 F2 E5.
+
+EZEZEZ -> [ Expression ] | F3 F2 E5.
+
+NewSimpleexpression -> NewAdditiveexpression E5.
+
+E5 -> Relop Additiveexpression.
+E5 -> .
+
+Relop -> == .
+Relop -> <.
+
+Additiveexpression -> NewTerm F2 | _check id_ id Varcall F3 F2.
+
+NewAdditiveexpression -> NewTerm F2.
+
+F2 -> Addop Term F2.
+F2 -> .
+
+Addop -> +.
+Addop -> -.
+
+Term -> NewSignedfactor F3 | NewFactor F3 | _check id_ id Varcall F3.
+
+NewTerm -> NewSignedfactor F3 | NewFactor F3.
+
+F3 -> * Signedfactor F3.
+F3 -> .
+
+NewSignedfactor -> + Factor.
+NewSignedfactor -> - Factor .
+
+Signedfactor -> Factor.
+Signedfactor -> + Factor.
+Signedfactor -> - Factor .
+
+Args -> Arglist .
+Args ->  .
+
+Arglist -> Expression F4.
+
+F4 -> , Expression.
+F4 -> .
+
+NewFactor -> ( Expression ).
+NewFactor -> num .
+
+Factor -> ( Expression ).
+Factor -> _check id_ id Varcall.
+Factor -> num .
+
+NewVarcall -> .
+NewVarcall -> ( Args ).
+
+Varcall -> .
+Varcall -> [ Expression ].
+Varcall -> ( Args ).
+
+Params -> _type(int)_ int _add id_ id _var_ Paramlist.
+Params -> void BB.
+
+BB -> _inline:'illegal..'_ id Paramlist.
+BB -> .
+
+Paramlist -> E2 F1.
+
+F1 -> , Typespecifier _add id_* id _var_* E2 F1.
+F1 -> .
+
+E2 -> [].
+E2 -> .

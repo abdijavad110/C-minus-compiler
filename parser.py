@@ -241,7 +241,7 @@ def AA():
 
 
 def fun_declaration():
-    s_fun()
+    s_fun_start()
     if case1('('):
         while not(case2('Params') and params()):
             error(2, 'Params')
@@ -250,6 +250,7 @@ def fun_declaration():
                 break
         if not case1(')'):
             error(1, ')')
+        s_fun_parameters_finished()
         while not(case2('Compoundstmt') and compound_stmt()):
             error(2, 'Params')
             if 'eps' not in first('Params') and cur_token in follow('Params'):

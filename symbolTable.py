@@ -8,15 +8,16 @@ def next_address():
 
 
 class TableEntry:
-    def __init__(self, e_type, e_id, depth, address):
+    def __init__(self, e_type, e_id, depth, address, args=0):
         self.e_type = e_type  # 'void' or 'int'
         self.e_id = e_id  # ID
         self.depth = depth  # (depth == None) == function
         self.address = address  # address of variable or code
+        self.args = args
 
     def __str__(self):
         if self.depth is None:
-            return "function " + self.e_id + " of type " + self.e_type + " in: " + str(self.address) + "\n"
+            return "function " + self.e_id + " of type " + self.e_type + " in: " + str(self.address) + " with " + str(self.args) + " args" "\n"
         return "variable " + self.e_id + " of type " + self.e_type + " and depth of " + str(self.depth) + " in: " + str(self.address) + "\n"
 
 
@@ -30,11 +31,12 @@ class SymbolTable:
             string += str(i)
         return str(string)
 
-    def add(self, e_type, e_id, depth=None, address=None):
+    def add(self, e_type, e_id, depth=None, address=None, args=0):
         if depth is None:
-            self.array.append(TableEntry(e_type, e_id, depth, address))
+            self.array.append(TableEntry(e_type, e_id, depth, address, args=args))
         else:
             self.array.append(TableEntry(e_type, e_id, depth, next_address()))
+        print("sth added\n" + str(self))
 
     def is_duplicate_free(self, e_id, depth=None):
         for entry in self.array:
@@ -59,3 +61,7 @@ class SymbolTable:
             if self.array[i].depth is not None and self.array[i].e_id == a:
                 return self.array[i].address
         return None
+
+    def set_fun_args(self, n):
+        self.array[len(self.array)-n-1].args = n
+        print("set fun args\n" + str(self))
