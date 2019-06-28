@@ -1,7 +1,5 @@
 void a(void){
-    while(1==1){
-        break;
-        continue;
-    }
-    break;
+    int a;
+    int b;
+    a = a -10;
 }

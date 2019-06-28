@@ -615,6 +615,7 @@ def EXEXEX():
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
                 error(3, 'Expression')
                 break
+        c_assign()
         return success()
     if case2('NewVarcall') and new_var_call():
         while not (case2('F3') and F3()):
@@ -654,6 +655,7 @@ def E5():
             if 'eps' not in first('Additiveexpression') and cur_token in follow('Additiveexpression'):
                 error(3, 'Additiveexpression')
                 break
+        c_pushComparison()
         return success()
     if case3('E5'):
         return success()
@@ -661,7 +663,11 @@ def E5():
 
 
 def relop():
-    if case1('==') or case1('<'):
+    if case1('=='):
+        c_pushEquality()
+        return success()
+    elif case1('<'):
+        c_pushSmallerThan()
         return success()
     return failure()
 
@@ -713,6 +719,7 @@ def EZEZEZ():
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
                 error(3, 'Expression')
                 break
+        c_assign()
         return success()
     if case2('F3') and F3():
         while not (case2('F2') and F2()):
@@ -740,9 +747,10 @@ def new_var_call():
         s_fun_args_finished()
         if not case1(')'):
             error(1, ')')
+        c_return()
         return success()
     if case3('NewVarcall'):
-        s_check_id_finished()
+        #s_check_id_finished()
         return success()
     return failure()
 
@@ -754,6 +762,7 @@ def F3():
             if 'eps' not in first('Signedfactor') and cur_token in follow('Signedfactor'):
                 error(3, 'Signedfactor')
                 break
+        c_mult()
         while not (case2('F3') and F3()):
             error(2, 'F3')
             if 'eps' not in first('F3') and cur_token in follow('F3'):
@@ -790,6 +799,7 @@ def F2():
             if 'eps' not in first('Term') and cur_token in follow('Term'):
                 error(3, 'Term')
                 break
+        c_add_or_sub()
         while not (case2('F2') and F2()):
             error(2, 'F2')
             if 'eps' not in first('F2') and cur_token in follow('F2'):
@@ -810,6 +820,7 @@ def var_call():
                 break
         if not case1(']'):
             error(1, ']')
+        c_computeIndex()
         s_check_id_finished()
         return success()
     if case1('('):
@@ -822,9 +833,10 @@ def var_call():
         s_fun_args_finished()
         if not case1(')'):
             error(1, ')')
+        c_return()
         return success()
     if case3('NewVarcall'):
-        s_check_id_finished()
+        # s_check_id_finished()
         return success()
     return failure()
 
@@ -845,6 +857,7 @@ def signed_factor():
             if 'eps' not in first('Factor') and cur_token in follow('Factor'):
                 error(3, 'Factor')
                 break
+        c_negate()
         return success()
     return failure()
 
@@ -871,6 +884,7 @@ def new_signed_factor():
             if 'eps' not in first('Factor') and cur_token in follow('Factor'):
                 error(3, 'Factor')
                 break
+        c_negate()
         return success()
     return failure()
 
@@ -885,13 +899,19 @@ def new_factor():
         if not case1(')'):
             error(1, ')')
         return success()
+    tmp = cur_token_vec.name
     if case1('num'):
+        c_pushNum(tmp)
         return success()
     return failure()
 
 
 def addop():
-    if case1('+') or case1('-'):
+    if case1('+'):
+        c_pushPlus()
+        return success()
+    elif case1('-'):
+        c_pushMinus()
         return success()
     return failure()
 
@@ -945,7 +965,9 @@ def factor():
                 error(3, 'Varcall')
                 break
         return success()
+    tmp = cur_token_vec.name
     if case1('num'):
+        c_pushNum(tmp)
         return success()
     return failure()
 

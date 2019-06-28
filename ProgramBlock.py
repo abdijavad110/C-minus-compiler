@@ -11,6 +11,7 @@ class ProgramBlock:
         
     def addInstruction(self, op, opr1, opr2, dest):
         inst = Instruction(op, opr1, opr2, dest)
+        print(inst)
         self.array.append(inst)
         self.line += 1
         
@@ -19,6 +20,7 @@ class ProgramBlock:
 
     def setInstruction(self, op, opr1, opr2, dest, i):
         inst = Instruction(op, opr1, opr2, dest)
+        print(inst)
         self.array[i] = inst
 
 
@@ -27,16 +29,14 @@ class ProgramBlock:
             self.addInstruction(None)
 
 class Instruction:
-    def __init__(self):
-        self.op
-        self.operand1
-        self.operand2
-        self.dest
-
     def __init__(self, op, opr1, opr2, dest):
         self.op = op
         self.operand1 = opr1
         self.operand2 = opr2
         self.dest = dest
+
+    def __str__(self):
+        return "("+str(self.op)+", "+str(self.operand1)+", "+str(self.operand2)+", "+str(self.dest)+")"
+
 
 

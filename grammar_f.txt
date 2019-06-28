@@ -54,61 +54,61 @@ Casestmt -> case num : Statementlist .
 Defaultstmt -> default : Statementlist.
 Defaultstmt -> .
 
-Expression -> _check id_ id _check id finished_ EXEXEX.
+Expression -> _check id_ id EXEXEX.
 Expression -> NewSimpleexpression.
 
-EXEXEX -> [ Expression ] EZEZEZ | = Expression | NewVarcall F3 F2 E5.
+EXEXEX -> [ Expression ] EZEZEZ | = Expression c_assign | NewVarcall F3 F2 E5.
 
-EZEZEZ -> = Expression | F3 F2 E5.
+EZEZEZ -> = Expression c_assign | F3 F2 E5.
 
 NewSimpleexpression -> NewAdditiveexpression E5.
 
-E5 -> Relop Additiveexpression.
+E5 -> Relop Additiveexpression c_pushComparison.
 E5 -> .
 
-Relop -> == .
-Relop -> <.
+Relop -> == c_pushEquality .
+Relop -> < c_pushSmallerThan .
 
 Additiveexpression -> NewTerm F2 | _check id_ id Varcall F3 F2.
 
 NewAdditiveexpression -> NewTerm F2.
 
-F2 -> Addop Term F2.
+F2 -> Addop Term c_add_or_sub F2.
 F2 -> .
 
-Addop -> +.
-Addop -> -.
+Addop -> + c_pushPlus .
+Addop -> - c_pushMinus .
 
 Term -> NewSignedfactor F3 | NewFactor F3 | _check id_ id Varcall F3.
 
 NewTerm -> NewSignedfactor F3 | NewFactor F3.
 
-F3 -> * Signedfactor F3.
+F3 -> * Signedfactor c_mult F3.
 F3 -> .
 
 NewSignedfactor -> + Factor.
-NewSignedfactor -> - Factor .
+NewSignedfactor -> - Factor c_negate .
 
 Signedfactor -> Factor.
 Signedfactor -> + Factor.
-Signedfactor -> - Factor .
+Signedfactor -> - Factor c_negate .
 
 F4 -> , _fun args increase_ Expression F4.
 F4 -> .
 
 NewFactor -> ( Expression ).
-NewFactor -> num .
+NewFactor -> c_pushNum num .
 
 Factor -> ( Expression ).
 Factor -> _check id_ id Varcall.
-Factor -> num .
+Factor -> c_pushNum num .
 
 NewVarcall -> _check id finished_.
-NewVarcall -> ( _fun args start_ Args _fun args finished_ ).
+NewVarcall -> ( _fun args start_ Args _fun args finished_ ) c_return.
 
 Varcall -> _check id finished_.
-Varcall -> [ Expression ] _check id finished_.
-Varcall -> ( _fun args start_ Args _fun args finished_ ).
+Varcall -> [ Expression ] c_computeIndex _check id finished_.
+Varcall -> ( _fun args start_ Args _fun args finished_ ) c_return.
 
 Args -> Arglist.
 Args ->  .

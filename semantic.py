@@ -68,13 +68,13 @@ def s_print_sym_table():
 
 
 def s_check_id(a):
-    stack.push(a)
     temp = sym_table.check_and_return_id(a, 1)
+    stack.push(temp)
     if temp is None:
         print(a + " is not defined")
         return True
     else:
-        pass        # todo: push id to semantic stack
+        pass  # todo: push id to semantic stack
         return True
 
 
@@ -94,7 +94,7 @@ def s_fun_args_finished():
     elif args != function_args:
         print("Mismatch in numbers of arguments of " + stack.get())
         pass
-    stack.pop()     # if need function name delete it
+    stack.pop()  # if need function name delete it
 
 
 def s_fun_args_increase():
@@ -132,9 +132,9 @@ def s_switch_finished():
     stack.pop()
 
 
-#Rez
+# Rez
 
-#varcall -> [Expression] #
+# varcall -> [Expression] #
 def c_computeIndex():
     temp1 = sym_table.getTemp()
     PB.addInstruction("MULT", "#" + str(4), stack.get(), temp1)
@@ -144,105 +144,112 @@ def c_computeIndex():
     stack.push(temp)
 
 
-#TODO
-#Varcall -> (Args) #
+# TODO
+# Varcall -> (Args) #
 def c_return():
     temp = sym_table.getTemp()
-    #function call and store result
+    # function call and store result
     stack.push(temp)
 
 
-#Factor -> #pushNum num
+# Factor -> #pushNum num
 def c_pushNum(num):
     temp = sym_table.getTemp()
     PB.addInstruction("ASSIGN", "#" + num, temp, None)
     stack.push(temp)
 
-#F3 -> *signed factor #mult
+
+# F3 -> *signed factor #mult
 def c_mult():
     temp = sym_table.getTemp()
     PB.addInstruction("MULT", stack.get(), stack.get(1), temp)
     stack.pop(2)
     stack.push(temp)
 
-#signedfactor -> - factor #?
+
+# signedfactor -> - factor #?
 def c_negate():
     PB.addInstruction("SUB", "#" + str(0), stack.get(), stack.get())
 
 
-#addop -> + #
+# addop -> + #
 def c_pushPlus():
     stack.push("+")
 
 
-#addop -> - #
+# addop -> - #
 def c_pushMinus():
     stack.push("-")
 
 
-#F2 -> addop term #add F2
+# F2 -> addop term #add F2
 def c_add_or_sub():
     temp = sym_table.getTemp()
     if stack.get(1) == "+":
         PB.addInstruction("ADD", stack.get(), stack.get(2), temp)
-    else :
+    else:
         PB.addInstruction("SUB", stack.get(), stack.get(2), temp)
 
     stack.pop(3)
     stack.push(temp)
 
-#Relop -> == #
+
+# Relop -> == #
 def c_pushEquality():
     stack.push("==")
 
 
-#Relop -> < #
+# Relop -> < #
 def c_pushSmallerThan():
     stack.push("<")
 
 
-#E5 -> Relop AdditiveExpression #
+# E5 -> Relop AdditiveExpression #
 def c_pushComparison():
     temp = sym_table.getTemp()
     if stack.get(1) == "==":
         PB.addInstruction("EQ", stack.get(), stack.get(2), temp)
-    else :
+    else:
         PB.addInstruction("LT", stack.get(2), stack.get(), temp)
     stack.pop(3)
     stack.push(temp)
 
-#EZEZEZ -> = Expression #
-#EXEXEX -> = Expression #
+
+# EZEZEZ -> = Expression #
+# EXEXEX -> = Expression #
 def c_assign():
-    temp = sym_table.getTemp()
-    PB.addInstruction("ASSIGN", stack.get(), temp, None)
+    temp = stack.get()
     PB.addInstruction("ASSIGN", stack.get(), stack.get(1), None)
     stack.pop(2)
     stack.push(temp)
 
-#While
+
+# While
 def c_whileFirst():
     PB.addInstruction("JP", PB.line + 2, None, None)
     PB.insertDummy(2)
     stack.push(PB.line)
 
+
 def c_saveLabel():
     stack.push(PB.line)
     PB.insertDummy(1)
 
+
 def c_whileLast():
     PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
     PB.addInstruction("JP", stack.get(2), None, None)
-    PB.setInstruction("JP", PB.line + 1, None , None, stack.get(2) - 1)
+    PB.setInstruction("JP", PB.line + 1, None, None, stack.get(2) - 1)
     stack.pop(3)
 
 
-#If
+# If
 def c_if1():
     PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
     stack.pop(2)
     stack.push(PB.line)
     PB.insertDummy(1)
+
 
 def c_if2():
     PB.setInstruction("JP", PB.line + 1, None, None, stack.get())
@@ -250,10 +257,11 @@ def c_if2():
     stack.pop(1)
 
 
-#continue
+# continue
 def c_continue():
     PB.addInstruction("JP", stack.get(2), None, None)
 
-#break
+
+# break
 def c_break():
     PB.addInstruction("JP", stack.get(2) - 1, None, None)
