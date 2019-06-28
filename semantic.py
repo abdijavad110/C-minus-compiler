@@ -132,6 +132,10 @@ def s_switch_finished():
     stack.pop()
 
 
+def c_pop():
+    stack.pop()
+
+
 # Rez
 
 # varcall -> [Expression] #
@@ -257,7 +261,7 @@ def c_if2():
 
 
 def c_if3():
-    PB.setInstruction("JP", PB.line + 1, None, None, stack.get())
+    PB.setInstruction("JP", PB.line, None, None, stack.get())
     # PB.insertDummy()
     stack.pop(1)
 

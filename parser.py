@@ -450,6 +450,7 @@ def expression_stmt():
     if case2('Expression') and expression():
         if not case1(';'):
             error(1, ';')
+        c_pop()
         return success()
     return failure()
 
