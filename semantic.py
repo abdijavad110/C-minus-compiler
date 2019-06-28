@@ -1,10 +1,13 @@
 from stack import Stack
 from symbolTable import SymbolTable
+from ProgramBlock import ProgramBlock
 
 depth = 0
 function_args = 0
 stack = Stack()
 sym_table = SymbolTable()
+
+PB = ProgramBlock()
 
 
 def initialize_semantic_analyzer():
@@ -127,3 +130,92 @@ def s_while_finished():
 
 def s_switch_finished():
     stack.pop()
+
+
+#Rez
+
+#varcall -> [Expression] #
+def c_computeIndex():
+    temp1 = sym_table.getTemp()
+    PB.addInstruction("MULT", "#" + 4, stack.get(), temp1)
+    temp = sym_table.getTemp()
+    PB.addInstruction("ADD", stack.get(1), temp1, temp)
+    stack.pop(2)
+    stack.push(temp)
+
+
+#TODO
+#Varcall -> (Args) #
+def c_return():
+    temp = sym_table.getTemp()
+    #function call and store result
+    stack.push(temp)
+
+
+#Factor -> #pushNum num
+def c_pushNum(num):
+    temp = sym_table.getTemp()
+    PB.addInstruction("ASSIGN", "#" + num, temp, None)
+    stack.push(temp)
+
+#F3 -> *signed factor #mult
+def c_mult():
+    temp = sym_table.getTemp()
+    PB.addInstruction("MULT", stack.get(), stack.get(1), temp)
+    stack.pop(2)
+    stack.push(temp)
+
+#signedfactor -> - factor #?
+def c_negate():
+    PB.addInstruction("SUB", "#" + 0, stack.get(), stack.get())
+
+
+#addop -> + #
+def c_pushPlus():
+    stack.push("+")
+
+
+#addop -> - #
+def c_pushMinus():
+    stack.push("-")
+
+
+#F2 -> addop term #add F2
+def c_add_or_sub():
+    temp = sym_table.getTemp()
+    if stack.get(1) == "+":
+        PB.addInstruction("ADD", stack.get(), stack.get(2), temp)
+    else :
+        PB.addInstruction("SUB", stack.get(), stack.get(2), temp)
+
+    stack.pop(3)
+    stack.push(temp)
+
+#Relop -> == #
+def c_pushEquality():
+    stack.push("==")
+
+
+#Relop -> < #
+def c_pushSmallerThan():
+    stack.push("<")
+
+
+#E5 -> Relop AdditiveExpression #
+def c_pushComparison():
+    temp = sym_table.getTemp()
+    if stack.get(1) == "==":
+        PB.addInstruction("EQ", stack.get(), stack.get(2), temp)
+    else :
+        PB.addInstruction("LT", stack.get(2), stack.get(), temp)
+    stack.pop(3)
+    stack.push(temp)
+
+#EZEZEZ -> = Expression #
+#EXEXEX -> = Expression #
+def c_assign():
+    temp = sym_table.getTemp()
+    PB.addInstruction("ASSIGN", stack.get(), temp, None)
+    PB.addInstruction("ASSIGN", stack.get(), stack.get(1), None)
+    stack.pop(2)
+    stack.push(temp)

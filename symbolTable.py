@@ -1,6 +1,7 @@
 var_address = 500
 
 
+
 def next_address():
     global var_address
     var_address += 4
@@ -9,11 +10,14 @@ def next_address():
 
 class TableEntry:
     def __init__(self, e_type, e_id, depth, address, args=0):
+
         self.e_type = e_type  # 'void' or 'int'
         self.e_id = e_id  # ID
         self.depth = depth  # (depth == None) == function
         self.address = address  # address of variable or code
         self.args = args
+
+
 
     def __str__(self):
         if self.depth is None:
@@ -26,6 +30,12 @@ class TableEntry:
 class SymbolTable:
     def __init__(self):
         self.array = []
+        self.temp_address = 1000
+
+    def getTemp(self):
+        self.temp_address += 4
+        return self.temp_address - 4
+
 
     def __str__(self):
         string = ''
