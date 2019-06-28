@@ -65,7 +65,8 @@ def s_print_sym_table():
 
 
 def s_check_id(a):
-    temp = sym_table.check_and_return_id(a)
+    stack.push(a)
+    temp = sym_table.check_and_return_id(a, 1)
     if temp is None:
         print(a + " is not defined")
         return True
@@ -73,3 +74,26 @@ def s_check_id(a):
         pass        # todo: push id to semantic stack
         return True
 
+
+def s_check_id_finished():
+    stack.pop()
+
+
+def s_fun_args_start():
+    global function_args
+    function_args = 0
+
+
+def s_fun_args_finished():
+    args = sym_table.check_and_return_id(stack.get(), 0)
+    if args is None:
+        print(stack.get() + " is not defined")
+    elif args != function_args:
+        print("Mismatch in numbers of arguments of " + stack.get())
+        pass
+    stack.pop()     # if need function name delete it
+
+
+def s_fun_args_increase():
+    global function_args
+    function_args += 1

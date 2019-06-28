@@ -726,15 +726,18 @@ def EZEZEZ():
 
 def new_var_call():
     if case1('('):
+        s_fun_args_start()
         while not (case2('Args') and args()):
             error(2, 'Args')
             if 'eps' not in first('Args') and cur_token in follow('Args'):
                 error(3, 'Args')
                 break
+        s_fun_args_finished()
         if not case1(')'):
             error(1, ')')
         return success()
     if case3('NewVarcall'):
+        s_check_id_finished()
         return success()
     return failure()
 
@@ -802,17 +805,21 @@ def var_call():
                 break
         if not case1(']'):
             error(1, ']')
+        s_check_id_finished()
         return success()
     if case1('('):
+        s_fun_args_start()
         while not (case2('Args') and args()):
             error(2, 'Args')
             if 'eps' not in first('Args') and cur_token in follow('Args'):
                 error(3, 'Args')
                 break
+        s_fun_args_finished()
         if not case1(')'):
             error(1, ')')
         return success()
     if case3('NewVarcall'):
+        s_check_id_finished()
         return success()
     return failure()
 
@@ -939,6 +946,7 @@ def factor():
 
 
 def arglist():
+    s_fun_args_increase()
     if case2('Expression') and expression():
         while not (case2('F4') and F4()):
             error(2, 'F4')
@@ -951,10 +959,16 @@ def arglist():
 
 def F4():
     if case1(','):
+        s_fun_args_increase()
         while not (case2('Expression') and expression()):
             error(2, 'Expression')
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
                 error(3, 'Expression')
+                break
+        while not (case2('F4') and F4()):
+            error(2, 'F4')
+            if 'eps' not in first('F4') and cur_token in follow('F4'):
+                error(3, 'F4')
                 break
         return success()
     if case3('F4'):

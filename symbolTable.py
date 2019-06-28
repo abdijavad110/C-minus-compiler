@@ -56,10 +56,15 @@ class SymbolTable:
     def clear(self):
         self.array = []
 
-    def check_and_return_id(self, a):
-        for i in range(len(self.array)-1, -1, -1):
-            if self.array[i].depth is not None and self.array[i].e_id == a:
-                return self.array[i].address
+    def check_and_return_id(self, a, t):       # t=0 for fun & 1 for vars
+        if t == 1:
+            for i in range(len(self.array)-1, -1, -1):
+                if self.array[i].depth is not None and self.array[i].e_id == a:
+                    return self.array[i].address
+        elif t == 0:
+            for entry in self.array:
+                if entry.depth is None and entry.e_id == a:
+                    return entry.args
         return None
 
     def set_fun_args(self, n):
