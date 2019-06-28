@@ -26,7 +26,7 @@ def first(non_terminal):
         'Defaultstmt': ['eps', 'default'],
         'Expression': ['id', '+', '-', '(', 'num'],
         'EXEXEX': ['eps', '=', '[', '(', '*', '+', '-', '==', '<'],
-        'EZEZEZ': ['eps', '[', '*', '+', '-', '==', '<'],
+        'EZEZEZ': ['eps', '=', '*', '+', '-', '==', '<'],
         'NewSimpleexpression': ['+', '-', '(', 'num'],
         'E5': ['eps', '==', '<'],
         'Relop': ['==', '<'],
@@ -88,7 +88,7 @@ def follow(non_terminal):
         'Defaultstmt': ['}'],
         'Expression': [';', ',', ')', ']'],
         'EXEXEX': [';', ',', ')', ']'],
-        'EZEZEZ': [';', ',', ')', ']'],
+        'EZEZEZ': [';', ',', ')'],
         'NewSimpleexpression': [';', ',', ')', ']'],
         'E5': [';', ',', ')', ']'],
         'Relop': ['id', '+', '-', '(', 'num'],
@@ -419,7 +419,8 @@ def statement():
 
 
 def expression():
-    if s_check_id(cur_token_vec.name) and case1('id'):
+    tmp = cur_token_vec.name
+    if case1('id') and s_check_id(tmp):
         while not (case2('EXEXEX') and EXEXEX()):
             error(2, 'EXEXEX')
             if 'eps' not in first('EXEXEX') and cur_token in follow('EXEXEX'):
@@ -435,10 +436,12 @@ def expression_stmt():
     if case1(';'):
         return success()
     if case1('break'):
+        s_break()
         if not case1(';'):
             error(1, ';')
         return success()
     if case1('continue'):
+        s_continue()
         if not case1(';'):
             error(1, ';')
         return success()
@@ -450,6 +453,7 @@ def expression_stmt():
 
 
 def switch_stmt():
+    s_switch_start(cur_token_vec.line_number)
     if case1('switch'):
         if not case1('('):
             error(1, '(')
@@ -474,6 +478,7 @@ def switch_stmt():
                 break
         if not case1('}'):
             error(1, '}')
+        s_switch_finished()
         return success()
     return failure()
 
@@ -489,6 +494,7 @@ def return_stmt():
 
 
 def iteration_stmt():
+    s_while_start(cur_token_vec.line_number)
     if case1('while'):
         if not case1('('):
             error(1, '(')
@@ -503,6 +509,7 @@ def iteration_stmt():
             if 'eps' not in first('Statement') and cur_token in follow('Statement'):
                 error(3, 'Statement')
                 break
+        s_while_finished()
         return success()
     return failure()
 
@@ -700,14 +707,12 @@ def new_additive_expression():
 
 
 def EZEZEZ():
-    if case1('['):
+    if case1('='):
         while not (case2('Expression') and expression()):
             error(2, 'Expression')
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
                 error(3, 'Expression')
                 break
-        if not case1(']'):
-            error(1, ']')
         return success()
     if case2('F3') and F3():
         while not (case2('F2') and F2()):

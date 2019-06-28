@@ -1,4 +1,7 @@
-int d;
-void a(int a[], int c, int b){
-    a(b, a, c);
+void a(void){
+    while(1==1){
+        break;
+        continue;
+    }
+    break;
 }

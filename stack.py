@@ -17,6 +17,13 @@ class Stack:
     def clear(self):
         self.array = []
 
+    def check_and_return_control_statement(self, is_break):
+        for i in range(len(self.array) - 1, -1, -1):
+            entry = self.array[i]
+            if type(entry) == type(self.array) and (entry[0] == 'while' or (is_break and entry[0] == 'switch')):
+                return entry[i][1]
+        return None
+
     def __str__(self):
         string = ''
         for i in self.array:

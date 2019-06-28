@@ -17,8 +17,10 @@ class TableEntry:
 
     def __str__(self):
         if self.depth is None:
-            return "function " + self.e_id + " of type " + self.e_type + " in: " + str(self.address) + " with " + str(self.args) + " args" "\n"
-        return "variable " + self.e_id + " of type " + self.e_type + " and depth of " + str(self.depth) + " in: " + str(self.address) + "\n"
+            return "function " + self.e_id + " of type " + self.e_type + " in: " + str(self.address) + " with " + str(
+                self.args) + " args" "\n"
+        return "variable " + self.e_id + " of type " + self.e_type + " and depth of " + str(self.depth) + " in: " + str(
+            self.address) + "\n"
 
 
 class SymbolTable:
@@ -36,7 +38,7 @@ class SymbolTable:
             self.array.append(TableEntry(e_type, e_id, depth, address, args=args))
         else:
             self.array.append(TableEntry(e_type, e_id, depth, next_address()))
-        print("sth added\n" + str(self))
+        # print("sth added\n" + str(self))
 
     def is_duplicate_free(self, e_id, depth=None):
         for entry in self.array:
@@ -56,9 +58,9 @@ class SymbolTable:
     def clear(self):
         self.array = []
 
-    def check_and_return_id(self, a, t):       # t=0 for fun & 1 for vars
+    def check_and_return_id(self, a, t):  # t=0 for fun & 1 for vars
         if t == 1:
-            for i in range(len(self.array)-1, -1, -1):
+            for i in range(len(self.array) - 1, -1, -1):
                 if self.array[i].depth is not None and self.array[i].e_id == a:
                     return self.array[i].address
         elif t == 0:
@@ -68,5 +70,7 @@ class SymbolTable:
         return None
 
     def set_fun_args(self, n):
-        self.array[len(self.array)-n-1].args = n
-        print("set fun args\n" + str(self))
+        self.array[len(self.array) - n - 1].args = n
+        # print("set fun args\n" + str(self))
+
+

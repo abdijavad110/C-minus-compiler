@@ -23,7 +23,7 @@ Compoundstmt -> { Declarationlist Statementlist } .
 Statementlist -> .
 Statementlist -> Statement Statementlist.
 
-Statement -> Switchstmt .
+Statement -> Switchstmt.
 Statement -> Returnstmt.
 Statement -> Iterationstmt.
 Statement -> Selectionstmt.
@@ -31,20 +31,20 @@ Statement -> Compoundstmt.
 Statement -> Expressionstmt.
 
 Expressionstmt -> ; .
-Expressionstmt -> break ;.
-Expressionstmt -> continue ;.
+Expressionstmt -> break _s break_ ;.
+Expressionstmt -> continue _s continue_ ;.
 Expressionstmt -> Expression ;.
 
 Selectionstmt -> if ( Expression ) Statement else Statement .
 
-Iterationstmt -> while ( Expression ) Statement .
+Iterationstmt -> _while start_ while ( Expression ) Statement _while finished_ .
 
 Returnstmt -> return E3.
 
 E3 -> Expression ;.
 E3 -> ;.
 
-Switchstmt -> switch ( Expression ) { Casestmts Defaultstmt } .
+Switchstmt -> _switch start_ switch ( Expression ) { Casestmts Defaultstmt } _switch finished_ .
 
 Casestmts -> Casestmt Casestmts.
 Casestmts -> .
@@ -54,12 +54,12 @@ Casestmt -> case num : Statementlist .
 Defaultstmt -> default : Statementlist.
 Defaultstmt -> .
 
-Expression -> _check id_ id EXEXEX.
+Expression -> _check id_ id _check id finished_ EXEXEX.
 Expression -> NewSimpleexpression.
 
 EXEXEX -> [ Expression ] EZEZEZ | = Expression | NewVarcall F3 F2 E5.
 
-EZEZEZ -> [ Expression ] | F3 F2 E5.
+EZEZEZ -> = Expression | F3 F2 E5.
 
 NewSimpleexpression -> NewAdditiveexpression E5.
 
@@ -103,11 +103,11 @@ Factor -> ( Expression ).
 Factor -> _check id_ id Varcall.
 Factor -> num .
 
-NewVarcall -> .
-NewVarcall -> ( Args ).
+NewVarcall -> _check id finished_.
+NewVarcall -> ( _fun args start_ Args _fun args finished_ ).
 
-Varcall -> .
-Varcall -> [ Expression ].
+Varcall -> _check id finished_.
+Varcall -> [ Expression ] _check id finished_.
 Varcall -> ( _fun args start_ Args _fun args finished_ ).
 
 Args -> Arglist.

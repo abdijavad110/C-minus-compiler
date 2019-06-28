@@ -97,3 +97,33 @@ def s_fun_args_finished():
 def s_fun_args_increase():
     global function_args
     function_args += 1
+
+
+def s_switch_start(lno):
+    stack.push(['switch', lno])
+
+
+def s_while_start(lno):
+    stack.push(['while', lno])
+
+
+def s_break():
+    dest = stack.check_and_return_control_statement(True)
+    if dest is None:
+        print("No ’while’ or ’switch’ found for ’break’.")
+    # todo: generate break code
+
+
+def s_continue():
+    dest = stack.check_and_return_control_statement(False)
+    if dest is None:
+        print("No ’while’ found for ’continue’.")
+    # todo: generate continue code
+
+
+def s_while_finished():
+    stack.pop()
+
+
+def s_switch_finished():
+    stack.pop()
