@@ -36,7 +36,11 @@ class Instruction:
         self.dest = dest
 
     def __str__(self):
-        return "(" + str(self.op) + ", " + str(self.operand1) + ", " + str(self.operand2) + ", " + str(self.dest) + ")"
+        s = [str(self.op), str(self.operand1), str(self.operand2), str(self.dest)]
+        for a, i in enumerate([self.op, self.operand1, self.operand2, self.dest]):
+            if i is None:
+                s[a] = ''
+        return "(" + s[0] + ", " + s[1] + ", " + s[2] + ", " + s[3] + ")"
 
 
 

@@ -458,6 +458,7 @@ def expression_stmt():
 def switch_stmt():
     s_switch_start(cur_token_vec.line_number)
     if case1('switch'):
+        c_switch_start()
         if not case1('('):
             error(1, '(')
         while not (case2('Expression') and expression()):
@@ -481,6 +482,7 @@ def switch_stmt():
                 break
         if not case1('}'):
             error(1, '}')
+        c_switch_finished()
         s_switch_finished()
         return success()
     return failure()
@@ -575,6 +577,7 @@ def case_stmts():
 
 def case_stmt():
     if case1('case'):
+        c_switch_case_check(cur_token_vec.name)
         if not case1('num'):
             error(1, 'num')
         if not case1(':'):
@@ -584,6 +587,7 @@ def case_stmt():
             if 'eps' not in first('Statementlist') and cur_token in follow('Statementlist'):
                 error(3, 'Statementlist')
                 break
+        c_switch_case_finished()
         return success()
     return failure()
 

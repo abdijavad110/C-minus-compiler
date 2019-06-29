@@ -44,12 +44,12 @@ Returnstmt -> return E3.
 E3 -> Expression ;.
 E3 -> ;.
 
-Switchstmt -> _switch start_ switch ( Expression ) { Casestmts Defaultstmt } _switch finished_ .
+Switchstmt -> _switch start_ c_switchStart switch ( Expression ) { Casestmts Defaultstmt } c_switchFinished _switch finished_ .
 
 Casestmts -> Casestmt Casestmts.
 Casestmts -> .
 
-Casestmt -> case num : Statementlist .
+Casestmt -> case c_caseCheck num : Statementlist c_caseFinished.
 
 Defaultstmt -> default : Statementlist.
 Defaultstmt -> .

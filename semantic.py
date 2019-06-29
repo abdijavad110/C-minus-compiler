@@ -233,6 +233,7 @@ def c_whileFirst():
     PB.addInstruction("JP", PB.line + 2, None, None)
     PB.insertDummy(1)
     stack.push(PB.line)
+    stack.push(PB.line)
 
 
 def c_saveLabel():
@@ -243,8 +244,8 @@ def c_saveLabel():
 def c_whileLast():
     PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
     PB.addInstruction("JP", stack.get(2), None, None)
-    PB.setInstruction("JP", PB.line, None, None, stack.get(2) - 1)
-    stack.pop(3)
+    PB.setInstruction("JP", PB.line, None, None, stack.get(3) - 1)
+    stack.pop(4)
 
 
 # If
@@ -266,6 +267,32 @@ def c_if3():
     stack.pop(1)
 
 
+# switch
+def c_switch_start():
+    PB.addInstruction("JP", PB.line+2, None, None)
+    PB.insertDummy(1)
+    stack.push(PB.line)
+
+
+def c_switch_finished():
+    PB.setInstruction("JP", PB.line, None, None, stack.get(1)-1)
+    stack.pop(2)
+
+
+def c_switch_case_check(num):
+    temp = sym_table.getTemp()
+    PB.addInstruction("EQ", '#'+str(num), stack.get(), temp)
+    stack.push(PB.line)
+    PB.insertDummy(1)
+    stack.push(temp)
+
+
+def c_switch_case_finished():
+    PB.addInstruction("JP", PB.line+3, None, None)
+    PB.setInstruction("JPF", stack.get(), PB.line, None, stack.get(1))
+    stack.pop(2)
+
+
 # continue
 def c_continue():
     PB.addInstruction("JP", stack.get(2), None, None)
@@ -273,4 +300,4 @@ def c_continue():
 
 # break
 def c_break():
-    PB.addInstruction("JP", stack.get(2) - 1, None, None)
+    PB.addInstruction("JP", stack.get(3) - 1, None, None)
