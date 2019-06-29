@@ -1,4 +1,5 @@
 void a(void){
     int b[10];
     int a;
+    a = b[1]*2 + 3;
 }

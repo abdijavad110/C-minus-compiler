@@ -274,8 +274,8 @@ def E1():
         print(sym_table)
         return success()
     if case1('['):
-        if cur_token == 'num':
-            stack.push(int(cur_token_vec.name))
+        # if cur_token == 'num':
+        #     stack.push(int(cur_token_vec.name))
         if not case1('num'):
             error(1, 'num')
         if not case1(']'):

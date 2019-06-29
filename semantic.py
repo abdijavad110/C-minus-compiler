@@ -49,12 +49,12 @@ def s_ptr():
         if sym_table.is_duplicate_free(stack.get(), depth):
             # s_addArraySize()
             # stack.pop(1)
-            sym_table.add('int*', stack.get(1), depth=depth)
-            sym_table.var_address += 4 * (stack.get() - 1)
+            sym_table.add('int*', stack.get(0), depth=depth)
+            # sym_table.var_address += 4 * (stack.get() - 1)
             function_args += 1
     else:
         print('illegal type of void')
-    stack.pop(3)
+    stack.pop(2)
     return True
 
 
@@ -163,12 +163,26 @@ def c_pop():
 
 # varcall -> [Expression] #
 def c_computeIndex():
-    temp1 = sym_table.getTemp()
-    PB.addInstruction("MULT", "#" + str(4), stack.get(), temp1)
-    temp = sym_table.getTemp()
-    PB.addInstruction("ADD", stack.get(1), temp1, temp)
-    stack.pop(2)
-    stack.push(temp)
+    # temp1 = sym_table.getTemp()
+    # PB.addInstruction("ASSIGN", "#" + stack.get(), temp1, None)
+    # stack.pop(1)
+    temp2 = sym_table.getTemp()
+    PB.addInstruction('ASSIGN', '#' + str(4), temp2, None)
+    temp3 = sym_table.getTemp()
+    PB.addInstruction('MULT', stack.get(), temp2, temp3)
+    stack.pop(1)
+    temp4 = sym_table.getTemp()
+    PB.addInstruction('ADD', stack.get(), temp3, temp4)
+    stack.pop(1)
+    stack.push('@' + str(temp4))
+
+    # temp1 = sym_table.getTemp()
+    #
+    # PB.addInstruction("MULT", "#" + str(4), stack.get(), temp1)
+    # temp = sym_table.getTemp()
+    # PB.addInstruction("ADD", stack.get(1), temp1, temp)
+    # stack.pop(2)
+    # stack.push(temp)
 
 
 # TODO
@@ -324,3 +338,6 @@ def c_continue():
 # break
 def c_break():
     PB.addInstruction("JP", stack.get(3) - 1, None, None)
+
+
+#
