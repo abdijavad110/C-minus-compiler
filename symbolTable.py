@@ -1,11 +1,6 @@
-var_address = 500
 
 
 
-def next_address():
-    global var_address
-    var_address += 4
-    return var_address - 4
 
 
 class TableEntry:
@@ -31,6 +26,7 @@ class SymbolTable:
     def __init__(self):
         self.array = []
         self.temp_address = 1000
+        self.var_address = 500
 
     def getTemp(self):
         self.temp_address += 4
@@ -43,11 +39,15 @@ class SymbolTable:
             string += str(i)
         return str(string)
 
+    def next_address(self):
+        self.var_address += 4
+        return self.var_address - 4
+
     def add(self, e_type, e_id, depth=None, address=None, args=0):
         if depth is None:
             self.array.append(TableEntry(e_type, e_id, depth, address, args=args))
         else:
-            self.array.append(TableEntry(e_type, e_id, depth, next_address()))
+            self.array.append(TableEntry(e_type, e_id, depth, self.next_address()))
         # print("sth added\n" + str(self))
 
     def is_duplicate_free(self, e_id, depth=None):
@@ -82,6 +82,12 @@ class SymbolTable:
     def set_fun_args(self, n):
         self.array[len(self.array) - n - 1].args = n
         # print("set fun args\n" + str(self))
+
+    def get_type_by_address(self, address):
+        for i in range(len(self.array) - 1, -1, -1):
+            if self.array[i].address == address:
+                return self.array[i].e_type
+
 
 
 

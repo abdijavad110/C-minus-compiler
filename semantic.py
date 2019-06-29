@@ -39,6 +39,24 @@ def s_var():
     stack.pop(2)
     return True
 
+# def s_addArraySize():
+#     sym_table.var_address += 4 * stack.get()
+#     stack.pop(1)
+
+def s_ptr():
+    global function_args
+    if stack.get(1) != 'void':
+        if sym_table.is_duplicate_free(stack.get(), depth):
+            # s_addArraySize()
+            # stack.pop(1)
+            sym_table.add('int*', stack.get(1), depth=depth)
+            sym_table.var_address += 4 * stack.get()
+            function_args += 1
+    else:
+        print('illegal type of void')
+    stack.pop(3)
+    return True
+
 
 def s_fun_start():
     global depth, function_args
@@ -130,6 +148,11 @@ def s_while_finished():
 
 def s_switch_finished():
     stack.pop()
+
+# def s_type_checking(opr1, opr2):
+#     type1 = sym_table.get_type_by_address(opr1)
+#     type2 = sym_table.get_type_by_address(opr2)
+#
 
 
 def c_pop():

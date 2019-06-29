@@ -235,7 +235,7 @@ def AA():
     if case2('Fundeclaration') and fun_declaration():
         return success()
     if case2('Vardeclaration') and var_declaration():
-        s_var()
+        # s_var()
         return success()
     return failure()
 
@@ -270,14 +270,20 @@ def var_declaration():
 
 def E1():
     if case1(';'):
+        s_var()
         return success()
     if case1('['):
+        if cur_token == 'num':
+            stack.push(int(cur_token_vec.name))
         if not case1('num'):
             error(1, 'num')
         if not case1(']'):
             error(1, ']')
         if not case1(';'):
             error(1, ';')
+        s_ptr()
+
+        # print(sym_table)
         return success()
     return failure()
 

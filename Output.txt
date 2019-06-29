@@ -1,5 +1,7 @@
 1. (keyword, void) (id, a) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
-2. (keyword, int) (id, a) (symbol, [) (num, 4) (symbol, ]) (symbol, ;) 
-3. (id, a) (symbol, =) (id, a) (symbol, +) (id, b) (symbol, ;) 
-4. (symbol, }) 
+2. (keyword, int) (id, a) (symbol, [) (num, 5) (symbol, ]) (symbol, ;) 
+3. (keyword, int) (id, b) (symbol, ;) 
+4. (id, b) (symbol, =) (num, 2) (symbol, *) (id, a) (symbol, [) (num, 2) (symbol, ]) (symbol, ;) 
 5. 
+6. (symbol, }) 
+7. 
