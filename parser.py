@@ -271,6 +271,7 @@ def var_declaration():
 def E1():
     if case1(';'):
         s_var()
+        print(sym_table)
         return success()
     if case1('['):
         if cur_token == 'num':
