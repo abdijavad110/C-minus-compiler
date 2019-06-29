@@ -616,6 +616,7 @@ def EXEXEX():
                 break
         if not case1(']'):
             error(1, ']')
+        c_computeIndex()
         while not (case2('EZEZEZ') and EZEZEZ()):
             error(2, 'EZEZEZ')
             if 'eps' not in first('EZEZEZ') and cur_token in follow('EZEZEZ'):
@@ -834,7 +835,7 @@ def var_call():
         if not case1(']'):
             error(1, ']')
         c_computeIndex()
-        s_check_id_finished()
+        #s_check_id_finished()
         return success()
     if case1('('):
         s_fun_args_start()

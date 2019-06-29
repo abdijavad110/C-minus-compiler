@@ -5,13 +5,9 @@
       <change afterPath="$PROJECT_DIR$/Input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProgramBlock.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProgramBlock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grammar_f.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grammar_f.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parse_tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/parse_tree.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantic.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/stack.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,7 +18,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/phase_3$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561712461626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/phase3$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561789839539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/phase3$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561791701833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/C_minus$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561745523811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -30,8 +26,8 @@
       <file leaf-file-name="parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="577" column="16" selection-start-line="577" selection-start-column="16" selection-end-line="577" selection-end-column="16" />
+            <state relative-caret-position="100">
+              <caret line="618" column="24" selection-start-line="618" selection-start-column="24" selection-end-line="618" selection-end-column="24" />
               <folding>
                 <element signature="e#146#2303#0" />
                 <element signature="e#153#2289#0" />
@@ -170,8 +166,6 @@
                 <element signature="e#19864#20193#0" />
                 <element signature="e#19986#20168#0" />
                 <element signature="e#20121#20168#0" />
-                <element signature="e#20289#21815#0" />
-                <element signature="e#20312#20839#0" />
                 <element signature="e#20374#20544#0" />
                 <element signature="e#20500#20544#0" />
                 <element signature="e#20660#20814#0" />
@@ -318,17 +312,17 @@
       <file leaf-file-name="semantic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/semantic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="291" column="49" selection-start-line="291" selection-start-column="49" selection-end-line="291" selection-end-column="49" />
+            <state relative-caret-position="3650">
+              <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="input.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="input.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="50">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -345,7 +339,7 @@
       <file leaf-file-name="symbolTable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symbolTable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2150">
+            <state relative-caret-position="1475">
               <caret line="86" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
@@ -360,11 +354,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stack.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stack.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stack.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="19" selection-start-column="19" selection-end-column="19" />
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
               <folding>
                 <element signature="e#45#60#0" />
               </folding>
@@ -392,7 +386,7 @@
       <find>s_check_id</find>
       <find>False</find>
       <find>[]</find>
-      <find>case1('[') an</find>
+      <find />
       <find>fundeclara</find>
       <find>BB</find>
       <find>check_and_return_id</find>
@@ -400,7 +394,7 @@
       <find>s_check_id(</find>
       <find>break</find>
       <find>print</find>
-      <find>is not</find>
+      <find />
       <find>while_</find>
       <find>check_and</find>
       <find>table</find>
@@ -424,11 +418,11 @@
         <option value="$PROJECT_DIR$/symbolTable.py" />
         <option value="$PROJECT_DIR$/grammar_f.txt" />
         <option value="$PROJECT_DIR$/Input.txt" />
-        <option value="$PROJECT_DIR$/parser.py" />
-        <option value="$PROJECT_DIR$/input.txt" />
         <option value="$PROJECT_DIR$/ProgramBlock.py" />
+        <option value="$PROJECT_DIR$/input.txt" />
         <option value="$PROJECT_DIR$/semantic.py" />
         <option value="$PROJECT_DIR$/stack.py" />
+        <option value="$PROJECT_DIR$/parser.py" />
       </list>
     </option>
   </component>
@@ -571,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561785539628</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add switch&#10;and sync with break and parser">
+      <created>1561789924006</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1561789924006</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -592,7 +593,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32918552" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.2861991" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.7210584" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6339581" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.23382519" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.12311015" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -649,7 +650,8 @@
     <MESSAGE value="add function argument no. checking in function calls" />
     <MESSAGE value="sync parser with semantic part 1" />
     <MESSAGE value="while small bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="while small bug fixed" />
+    <MESSAGE value="add switch&#10;and sync with break and parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="add switch&#10;and sync with break and parser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -810,8 +812,6 @@
             <element signature="e#19864#20193#0" />
             <element signature="e#19986#20168#0" />
             <element signature="e#20121#20168#0" />
-            <element signature="e#20289#21815#0" />
-            <element signature="e#20312#20839#0" />
             <element signature="e#20374#20544#0" />
             <element signature="e#20500#20544#0" />
             <element signature="e#20660#20814#0" />
@@ -1141,8 +1141,6 @@
             <element signature="e#19864#20193#0" />
             <element signature="e#19986#20168#0" />
             <element signature="e#20121#20168#0" />
-            <element signature="e#20289#21815#0" />
-            <element signature="e#20312#20839#0" />
             <element signature="e#20374#20544#0" />
             <element signature="e#20500#20544#0" />
             <element signature="e#20660#20814#0" />
@@ -1337,17 +1335,48 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parse_tree.txt" />
+    <entry file="file://$PROJECT_DIR$/grammar_f.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProgramBlock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="39" column="81" selection-start-line="39" selection-start-column="81" selection-end-line="39" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+          <folding>
+            <element signature="e#45#60#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/symbolTable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2150">
+        <state relative-caret-position="1475">
           <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/semantic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3650">
+          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="577" column="16" selection-start-line="577" selection-start-column="16" selection-end-line="577" selection-end-column="16" />
+        <state relative-caret-position="100">
+          <caret line="618" column="24" selection-start-line="618" selection-start-column="24" selection-end-line="618" selection-end-column="24" />
           <folding>
             <element signature="e#146#2303#0" />
             <element signature="e#153#2289#0" />
@@ -1486,8 +1515,6 @@
             <element signature="e#19864#20193#0" />
             <element signature="e#19986#20168#0" />
             <element signature="e#20121#20168#0" />
-            <element signature="e#20289#21815#0" />
-            <element signature="e#20312#20839#0" />
             <element signature="e#20374#20544#0" />
             <element signature="e#20500#20544#0" />
             <element signature="e#20660#20814#0" />
@@ -1630,41 +1657,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grammar_f.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProgramBlock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="39" column="81" selection-start-line="39" selection-start-column="81" selection-end-line="39" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/semantic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="291" column="49" selection-start-line="291" selection-start-column="49" selection-end-line="291" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="19" selection-end-column="19" />
-          <folding>
-            <element signature="e#45#60#0" />
-          </folding>
+        <state relative-caret-position="50">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
         </state>
       </provider>
     </entry>
