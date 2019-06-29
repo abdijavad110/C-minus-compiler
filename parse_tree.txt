@@ -23,56 +23,58 @@ program
 |	|	|	|	|	|	|	|	|	|	E1
 |	|	|	|	|	|	|	|	|	|	|	';'
 |	|	|	|	|	|	|	Declarationlist
+|	|	|	|	|	|	|	|	Declaration
+|	|	|	|	|	|	|	|	|	Typespecifier
+|	|	|	|	|	|	|	|	|	|	'int'
+|	|	|	|	|	|	|	|	|	'id'
+|	|	|	|	|	|	|	|	|	AA
+|	|	|	|	|	|	|	|	|	|	Vardeclaration
+|	|	|	|	|	|	|	|	|	|	|	E1
+|	|	|	|	|	|	|	|	|	|	|	|	';'
+|	|	|	|	|	|	|	|	Declarationlist
 |	|	|	|	|	|	Statementlist
 |	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	Expressionstmt
+|	|	|	|	|	|	|	|	Iterationstmt
+|	|	|	|	|	|	|	|	|	'while'
+|	|	|	|	|	|	|	|	|	'('
 |	|	|	|	|	|	|	|	|	Expression
 |	|	|	|	|	|	|	|	|	|	'id'
 |	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	'='
-|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	NewSimpleexpression
-|	|	|	|	|	|	|	|	|	|	|	|	|	NewAdditiveexpression
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewTerm
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewFactor
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'num'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	|	Iterationstmt
-|	|	|	|	|	|	|	|	|	|	'while'
-|	|	|	|	|	|	|	|	|	|	'('
-|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
-|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	|	|	|	Relop
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	'<'
-|	|	|	|	|	|	|	|	|	|	|	|	|	Additiveexpression
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewTerm
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewFactor
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'num'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	')'
-|	|	|	|	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	|	|	|	Compoundstmt
-|	|	|	|	|	|	|	|	|	|	|	|	'{'
-|	|	|	|	|	|	|	|	|	|	|	|	Declarationlist
+|	|	|	|	|	|	|	|	|	|	|	NewVarcall
+|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	|	|	|	F2
+|	|	|	|	|	|	|	|	|	|	|	E5
+|	|	|	|	|	|	|	|	|	|	|	|	Relop
+|	|	|	|	|	|	|	|	|	|	|	|	|	'=='
+|	|	|	|	|	|	|	|	|	|	|	|	Additiveexpression
+|	|	|	|	|	|	|	|	|	|	|	|	|	NewTerm
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewFactor
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'num'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	|	|	|	|	|	F2
+|	|	|	|	|	|	|	|	|	')'
+|	|	|	|	|	|	|	|	|	Statement
+|	|	|	|	|	|	|	|	|	|	Compoundstmt
+|	|	|	|	|	|	|	|	|	|	|	'{'
+|	|	|	|	|	|	|	|	|	|	|	Declarationlist
+|	|	|	|	|	|	|	|	|	|	|	Statementlist
+|	|	|	|	|	|	|	|	|	|	|	|	Statement
+|	|	|	|	|	|	|	|	|	|	|	|	|	Expressionstmt
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	Expression
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'='
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Expression
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	';'
 |	|	|	|	|	|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	Expressionstmt
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'break'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	|	|	|	|	'}'
-|	|	|	|	|	|	|	|	Statementlist
+|	|	|	|	|	|	|	|	|	|	|	'}'
+|	|	|	|	|	|	|	Statementlist
 |	|	|	|	|	|	'}'
 |	|	Declarationlist
 |	'eof'

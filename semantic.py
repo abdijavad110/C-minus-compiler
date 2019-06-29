@@ -231,7 +231,7 @@ def c_assign():
 # While
 def c_whileFirst():
     PB.addInstruction("JP", PB.line + 2, None, None)
-    PB.insertDummy(2)
+    PB.insertDummy(1)
     stack.push(PB.line)
 
 
@@ -242,8 +242,8 @@ def c_saveLabel():
 
 def c_whileLast():
     PB.setInstruction("JPF", stack.get(1), PB.line + 1, None, stack.get())
-    PB.setInstruction("JP", PB.line + 1, None, None, stack.get(2) - 1)
     PB.addInstruction("JP", stack.get(2), None, None)
+    PB.setInstruction("JP", PB.line, None, None, stack.get(2) - 1)
     stack.pop(3)
 
 

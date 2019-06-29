@@ -1,8 +1,9 @@
 1. (keyword, void) (id, a) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
-2. (keyword, int) (id, i) (symbol, ;) 
-3. (id, i) (symbol, =) (num, 0) (symbol, ;) 
-4. (keyword, while) (symbol, () (id, i) (symbol, <) (num, 10) (symbol, )) (symbol, {) 
-5. (keyword, break) (symbol, ;) 
-6. (symbol, }) 
+2. (keyword, int) (id, a) (symbol, ;) 
+3. (keyword, int) (id, b) (symbol, ;) 
+4. (keyword, while) (symbol, () (id, a) (symbol, ==) (num, 1) (symbol, )) (symbol, {) 
+5. (id, b) (symbol, =) (id, a) (symbol, ;) 
+6. 
 7. (symbol, }) 
-8. 
+8. (symbol, }) 
+9. 
