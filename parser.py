@@ -271,7 +271,6 @@ def var_declaration():
 def E1():
     if case1(';'):
         s_var()
-        print(sym_table)
         return success()
     if case1('['):
         # if cur_token == 'num':
@@ -561,10 +560,12 @@ def selection_stmt():
 
 def E3():
     if case2('Expression') and expression():
+        c_return_with_value()
         if not case1(';'):
             error(1, ';')
         return success()
     if case1(';'):
+        c_return_none()
         return success()
     return failure()
 

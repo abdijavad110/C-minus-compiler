@@ -64,7 +64,7 @@ def s_fun_start():
     function_args = 0
     if sym_table.is_duplicate_free(stack.get()):
         sym_table.add(stack.get(1), stack.get(), address=PB.line)  # todo: function code address
-    stack.pop(2)
+    # stack.pop(2)
     return True
 
 
@@ -72,6 +72,7 @@ def s_fun_finished():
     sym_table.method_changed()
     global depth
     depth = 0
+    stack.pop(2)
     return True
 
 
@@ -161,14 +162,21 @@ def s_while_finished():
 def s_switch_finished():
     stack.pop()
 
-# def s_type_checking(opr1, opr2):
-#     type1 = sym_table.get_type_by_address(opr1)
-#     type2 = sym_table.get_type_by_address(opr2)
-#
-
 
 def c_pop():
     stack.pop()
+
+
+def c_return_with_value():
+    lv_address = sym_table.get_lv_by_name(stack.get(1))
+    PB.addInstruction('ASSIGN', stack.get(), lv_address, None)
+    PB.addInstruction('JP', '@'+str(lv_address + 4), None, None)
+    stack.pop()
+
+
+def c_return_none():
+    lv_address = sym_table.get_lv_by_name(stack.get())
+    PB.addInstruction('JP', '@'+str(lv_address + 4), None, None)
 
 
 # Rez
