@@ -1,11 +1,5 @@
-int fun(int a){
-    return a;
-}
-int fun2(int a){
-    return fun(a);
-}
 void main(void){
     int a;
-    int c;
-    c = fun2(a);
+    a = 2;
+    output(a);
 }

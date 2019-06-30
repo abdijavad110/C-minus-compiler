@@ -4,6 +4,7 @@ class ProgramBlock:
     def __init__(self):
         self.line = 0
         self.array = []
+        self.insertDummy(1)
 
     def addInstruction(self, inst):
         self.array.append(inst)

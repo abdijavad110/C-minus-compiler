@@ -20,9 +20,9 @@ class TableEntry:
 
 class SymbolTable:
     def __init__(self):
-        self.array = []
-        self.temp_address = 1000
         self.var_address = 500
+        self.temp_address = 1000
+        self.array = [TableEntry('void', 'output', None, -1234, args=1, lv_address=self.var_address-4)]
 
     def getTemp(self):
         self.temp_address += 4
@@ -41,6 +41,8 @@ class SymbolTable:
     def add(self, e_type, e_id, depth=None, address=None, args=0, lv_address=None):
         if depth is None:
             self.array.append(TableEntry(e_type, e_id, depth, address, args=args, lv_address=self.var_address))
+            if e_id == 'main':
+                return True
             self.var_address += 8
         else:
             self.array.append(TableEntry(e_type, e_id, depth, self.next_address()))

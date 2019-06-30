@@ -5,11 +5,12 @@
       <change afterPath="$PROJECT_DIR$/Input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProgramBlock.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProgramBlock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar_f.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grammar_f.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parse_tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/parse_tree.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semantic.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symbolTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/symbolTable.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +22,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/phase_3$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561712461626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/phase3$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561904327557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/phase3$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561908535221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/C_minus$parser.coverage" NAME="parser Coverage Results" MODIFIED="1561745523811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -29,8 +30,8 @@
       <file leaf-file-name="parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="774" column="8" selection-start-line="774" selection-start-column="8" selection-end-line="774" selection-end-column="8" />
+            <state relative-caret-position="925">
+              <caret line="195" column="25" selection-start-line="195" selection-start-column="25" selection-end-line="195" selection-end-column="25" />
               <folding>
                 <element signature="e#146#2303#0" />
                 <element signature="e#153#2289#0" />
@@ -66,8 +67,6 @@
                 <element signature="e#7804#7925#0" />
                 <element signature="e#7967#8010#0" />
                 <element signature="e#8032#8076#0" />
-                <element signature="e#8098#8265#0" />
-                <element signature="e#8158#8244#0" />
                 <element signature="e#8296#8725#0" />
                 <element signature="e#8347#8646#0" />
                 <element signature="e#8420#8621#0" />
@@ -284,6 +283,8 @@
                 <element signature="e#31945#32103#0" />
                 <element signature="e#32062#32103#0" />
                 <element signature="e#32187#32226#0" />
+                <element signature="e#32269#32574#0" />
+                <element signature="e#32344#32553#0" />
                 <element signature="e#32390#32528#0" />
                 <element signature="e#32492#32528#0" />
                 <element signature="e#32832#32876#0" />
@@ -292,17 +293,16 @@
                 <element signature="e#33192#33377#0" />
                 <element signature="e#33409#33781#0" />
                 <element signature="e#33820#33932#0" />
-                <element signature="e#33966#34210#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="semantic.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="semantic.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/semantic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="224" column="14" selection-start-line="224" selection-start-column="14" selection-end-line="224" selection-end-column="14" />
+            <state relative-caret-position="196">
+              <caret line="190" column="19" lean-forward="true" selection-start-line="190" selection-start-column="19" selection-end-line="190" selection-end-column="19" />
               <folding>
                 <element signature="e#232#314#0" />
                 <element signature="e#338#369#0" />
@@ -334,9 +334,6 @@
                 <element signature="e#3055#3066#0" />
                 <element signature="e#3098#3109#0" />
                 <element signature="e#3267#3278#0" />
-                <element signature="e#3486#3681#0" />
-                <element signature="e#3753#4114#0" />
-                <element signature="e#3518#3615#0" />
                 <element signature="e#3281#3286#0" />
                 <element signature="e#3342#4031#0" />
                 <element signature="e#3342#3371#0" />
@@ -369,11 +366,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Input.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Input.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="75">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -390,15 +387,19 @@
       <file leaf-file-name="symbolTable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symbolTable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="75">
+              <caret line="24" column="101" selection-start-line="24" selection-start-column="101" selection-end-line="24" selection-end-column="101" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ProgramBlock.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProgramBlock.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="stack.py" pinned="false" current-in-tab="false">
@@ -421,11 +422,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>next</find>
-      <find>next_addres</find>
-      <find>AA</find>
-      <find>s_add</find>
-      <find>next_address</find>
       <find>s_var</find>
       <find>s_ptr</find>
       <find>next_</find>
@@ -449,8 +445,13 @@
       <find>E3</find>
       <find>misma</find>
       <find>f4</find>
-      <find>print</find>
       <find>c_re</find>
+      <find>_add</find>
+      <find>sym</find>
+      <find>set_</find>
+      <find>pro</find>
+      <find>setIn</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>true</replace>
@@ -474,9 +475,9 @@
         <option value="$PROJECT_DIR$/ProgramBlock.py" />
         <option value="$PROJECT_DIR$/parser.py" />
         <option value="$PROJECT_DIR$/stack.py" />
+        <option value="$PROJECT_DIR$/Input.txt" />
         <option value="$PROJECT_DIR$/symbolTable.py" />
         <option value="$PROJECT_DIR$/semantic.py" />
-        <option value="$PROJECT_DIR$/Input.txt" />
       </list>
     </option>
   </component>
@@ -490,7 +491,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
+    <option name="x" value="1304" />
+    <option name="y" value="84" />
     <option name="width" value="1456" />
     <option name="height" value="2012" />
   </component>
@@ -664,7 +666,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561901088209</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add function call and argument passing">
+      <created>1561904477723</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1561904477723</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -678,13 +687,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1447" height="1013" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.18438914" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32918552" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.2861991" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3642534" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28846154" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.23382519" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.12455004" />
@@ -746,7 +756,8 @@
     <MESSAGE value="add switch&#10;and sync with break and parser" />
     <MESSAGE value="addressing bug fixed&#10;name of some variables had been pushed on stack instead of address" />
     <MESSAGE value="add return value and address to functions memory and return method" />
-    <option name="LAST_COMMIT_MESSAGE" value="add return value and address to functions memory and return method" />
+    <MESSAGE value="add function call and argument passing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add function call and argument passing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -763,7 +774,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/parser.py</url>
-          <line>1076</line>
+          <line>1077</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -810,8 +821,6 @@
             <element signature="e#7804#7925#0" />
             <element signature="e#7967#8010#0" />
             <element signature="e#8032#8076#0" />
-            <element signature="e#8098#8265#0" />
-            <element signature="e#8158#8244#0" />
             <element signature="e#8296#8725#0" />
             <element signature="e#8347#8646#0" />
             <element signature="e#8420#8621#0" />
@@ -1028,6 +1037,8 @@
             <element signature="e#31945#32103#0" />
             <element signature="e#32062#32103#0" />
             <element signature="e#32187#32226#0" />
+            <element signature="e#32269#32574#0" />
+            <element signature="e#32344#32553#0" />
             <element signature="e#32390#32528#0" />
             <element signature="e#32492#32528#0" />
             <element signature="e#32832#32876#0" />
@@ -1036,7 +1047,6 @@
             <element signature="e#33192#33377#0" />
             <element signature="e#33409#33781#0" />
             <element signature="e#33820#33932#0" />
-            <element signature="e#33966#34210#0" />
           </folding>
         </state>
       </provider>
@@ -1076,9 +1086,6 @@
             <element signature="e#3055#3066#0" />
             <element signature="e#3098#3109#0" />
             <element signature="e#3267#3278#0" />
-            <element signature="e#3486#3681#0" />
-            <element signature="e#3753#4114#0" />
-            <element signature="e#3518#3615#0" />
             <element signature="e#3281#3286#0" />
             <element signature="e#3342#4031#0" />
             <element signature="e#3342#3371#0" />
@@ -1184,8 +1191,6 @@
             <element signature="e#7804#7925#0" />
             <element signature="e#7967#8010#0" />
             <element signature="e#8032#8076#0" />
-            <element signature="e#8098#8265#0" />
-            <element signature="e#8158#8244#0" />
             <element signature="e#8296#8725#0" />
             <element signature="e#8347#8646#0" />
             <element signature="e#8420#8621#0" />
@@ -1402,6 +1407,8 @@
             <element signature="e#31945#32103#0" />
             <element signature="e#32062#32103#0" />
             <element signature="e#32187#32226#0" />
+            <element signature="e#32269#32574#0" />
+            <element signature="e#32344#32553#0" />
             <element signature="e#32390#32528#0" />
             <element signature="e#32492#32528#0" />
             <element signature="e#32832#32876#0" />
@@ -1410,7 +1417,6 @@
             <element signature="e#33192#33377#0" />
             <element signature="e#33409#33781#0" />
             <element signature="e#33820#33932#0" />
-            <element signature="e#33966#34210#0" />
           </folding>
         </state>
       </provider>
@@ -1496,8 +1502,6 @@
             <element signature="e#7804#7925#0" />
             <element signature="e#7967#8010#0" />
             <element signature="e#8032#8076#0" />
-            <element signature="e#8098#8265#0" />
-            <element signature="e#8158#8244#0" />
             <element signature="e#8296#8725#0" />
             <element signature="e#8347#8646#0" />
             <element signature="e#8420#8621#0" />
@@ -1714,6 +1718,8 @@
             <element signature="e#31945#32103#0" />
             <element signature="e#32062#32103#0" />
             <element signature="e#32187#32226#0" />
+            <element signature="e#32269#32574#0" />
+            <element signature="e#32344#32553#0" />
             <element signature="e#32390#32528#0" />
             <element signature="e#32492#32528#0" />
             <element signature="e#32832#32876#0" />
@@ -1722,7 +1728,6 @@
             <element signature="e#33192#33377#0" />
             <element signature="e#33409#33781#0" />
             <element signature="e#33820#33932#0" />
-            <element signature="e#33966#34210#0" />
           </folding>
         </state>
       </provider>
@@ -1808,8 +1813,6 @@
             <element signature="e#7804#7925#0" />
             <element signature="e#7967#8010#0" />
             <element signature="e#8032#8076#0" />
-            <element signature="e#8098#8265#0" />
-            <element signature="e#8158#8244#0" />
             <element signature="e#8296#8725#0" />
             <element signature="e#8347#8646#0" />
             <element signature="e#8420#8621#0" />
@@ -2026,6 +2029,8 @@
             <element signature="e#31945#32103#0" />
             <element signature="e#32062#32103#0" />
             <element signature="e#32187#32226#0" />
+            <element signature="e#32269#32574#0" />
+            <element signature="e#32344#32553#0" />
             <element signature="e#32390#32528#0" />
             <element signature="e#32492#32528#0" />
             <element signature="e#32832#32876#0" />
@@ -2034,7 +2039,6 @@
             <element signature="e#33192#33377#0" />
             <element signature="e#33409#33781#0" />
             <element signature="e#33820#33932#0" />
-            <element signature="e#33966#34210#0" />
           </folding>
         </state>
       </provider>
@@ -2156,8 +2160,6 @@
             <element signature="e#7804#7925#0" />
             <element signature="e#7967#8010#0" />
             <element signature="e#8032#8076#0" />
-            <element signature="e#8098#8265#0" />
-            <element signature="e#8158#8244#0" />
             <element signature="e#8296#8725#0" />
             <element signature="e#8347#8646#0" />
             <element signature="e#8420#8621#0" />
@@ -2374,6 +2376,8 @@
             <element signature="e#31945#32103#0" />
             <element signature="e#32062#32103#0" />
             <element signature="e#32187#32226#0" />
+            <element signature="e#32269#32574#0" />
+            <element signature="e#32344#32553#0" />
             <element signature="e#32390#32528#0" />
             <element signature="e#32492#32528#0" />
             <element signature="e#32832#32876#0" />
@@ -2382,7 +2386,6 @@
             <element signature="e#33192#33377#0" />
             <element signature="e#33409#33781#0" />
             <element signature="e#33820#33932#0" />
-            <element signature="e#33966#34210#0" />
           </folding>
         </state>
       </provider>
@@ -2417,19 +2420,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProgramBlock.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grammar_f.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+        <state relative-caret-position="125">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="774" column="8" selection-start-line="774" selection-start-column="8" selection-end-line="774" selection-end-column="8" />
+        <state relative-caret-position="925">
+          <caret line="195" column="25" selection-start-line="195" selection-start-column="25" selection-end-line="195" selection-end-column="25" />
           <folding>
             <element signature="e#146#2303#0" />
             <element signature="e#153#2289#0" />
@@ -2465,8 +2465,6 @@
             <element signature="e#7804#7925#0" />
             <element signature="e#7967#8010#0" />
             <element signature="e#8032#8076#0" />
-            <element signature="e#8098#8265#0" />
-            <element signature="e#8158#8244#0" />
             <element signature="e#8296#8725#0" />
             <element signature="e#8347#8646#0" />
             <element signature="e#8420#8621#0" />
@@ -2683,6 +2681,8 @@
             <element signature="e#31945#32103#0" />
             <element signature="e#32062#32103#0" />
             <element signature="e#32187#32226#0" />
+            <element signature="e#32269#32574#0" />
+            <element signature="e#32344#32553#0" />
             <element signature="e#32390#32528#0" />
             <element signature="e#32492#32528#0" />
             <element signature="e#32832#32876#0" />
@@ -2691,15 +2691,7 @@
             <element signature="e#33192#33377#0" />
             <element signature="e#33409#33781#0" />
             <element signature="e#33820#33932#0" />
-            <element signature="e#33966#34210#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symbolTable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
         </state>
       </provider>
     </entry>
@@ -2710,10 +2702,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grammar_f.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symbolTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="24" column="101" selection-start-line="24" selection-start-column="101" selection-end-line="24" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/semantic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="224" column="14" selection-start-line="224" selection-start-column="14" selection-end-line="224" selection-end-column="14" />
+        <state relative-caret-position="196">
+          <caret line="190" column="19" lean-forward="true" selection-start-line="190" selection-start-column="19" selection-end-line="190" selection-end-column="19" />
           <folding>
             <element signature="e#232#314#0" />
             <element signature="e#338#369#0" />
@@ -2745,9 +2758,6 @@
             <element signature="e#3055#3066#0" />
             <element signature="e#3098#3109#0" />
             <element signature="e#3267#3278#0" />
-            <element signature="e#3486#3681#0" />
-            <element signature="e#3753#4114#0" />
-            <element signature="e#3518#3615#0" />
             <element signature="e#3281#3286#0" />
             <element signature="e#3342#4031#0" />
             <element signature="e#3342#3371#0" />
@@ -2776,13 +2786,6 @@
             <element signature="e#7062#7111#0" />
             <element signature="e#7141#7194#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
         </state>
       </provider>
     </entry>

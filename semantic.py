@@ -63,7 +63,7 @@ def s_fun_start():
     depth += 1
     function_args = 0
     if sym_table.is_duplicate_free(stack.get()):
-        sym_table.add(stack.get(1), stack.get(), address=PB.line)  # todo: function code address
+        sym_table.add(stack.get(1), stack.get(), address=PB.line)
     # stack.pop(2)
     return True
 
@@ -164,11 +164,19 @@ def s_switch_finished():
     stack.pop()
 
 
+def c_file_finished():
+    args = sym_table.check_and_return_id('main', 0)
+    if args is not None:
+        PB.setInstruction('JP', args[1], None, None, 0)
+
+
 def c_pop():
     stack.pop()
 
 
 def c_return_with_value():
+    if stack.get() == 'main':
+        return True
     lv_address = sym_table.get_lv_by_name(stack.get(1))
     PB.addInstruction('ASSIGN', stack.get(), lv_address, None)
     PB.addInstruction('JP', '@'+str(lv_address + 4), None, None)
@@ -176,7 +184,11 @@ def c_return_with_value():
 
 
 def c_copy_argument():
-    lv_address = sym_table.get_lv_by_name(sym_table.get_name_by_address(stack.get(function_args)))
+    fun_name = sym_table.get_name_by_address(stack.get(function_args))
+    lv_address = sym_table.get_lv_by_name(fun_name)
+    if fun_name == 'output':
+        PB.addInstruction('ASSIGN', stack.get(), lv_address, None)
+        return True
     if sym_table.get_type_by_address(stack.get()) == 'int':
         PB.addInstruction('ASSIGN', stack.get(), lv_address+4+4*function_args, None)
     else:
@@ -185,6 +197,8 @@ def c_copy_argument():
 
 
 def c_return_none():
+    if stack.get() == 'main':
+        return True
     lv_address = sym_table.get_lv_by_name(stack.get())
     PB.addInstruction('JP', '@'+str(lv_address + 4), None, None)
 
@@ -217,8 +231,12 @@ def c_computeIndex():
 
 # Varcall -> (Args) #
 def c_return():
-    lv_address = sym_table.get_lv_by_name(sym_table.get_name_by_address(stack.get()))
-    address = sym_table.check_and_return_id(sym_table.get_name_by_address(stack.get()), 0)[1]
+    fun_name = sym_table.get_name_by_address(stack.get())
+    lv_address = sym_table.get_lv_by_name(fun_name)
+    if fun_name == 'output':
+        PB.addInstruction('PRINT', lv_address, None, None)
+        return True
+    address = sym_table.check_and_return_id(fun_name, 0)[1]
     PB.addInstruction('ASSIGN', PB.line+2, lv_address+4, None)
     PB.addInstruction('JP', '#'+str(address), None, None)
     tmp = stack.get()

@@ -41,8 +41,8 @@ Iterationstmt -> _while start_ while c_whileFirst ( Expression ) c_saveLabel Sta
 
 Returnstmt -> return E3.
 
-E3 -> Expression c_;.
-E3 -> c_;.
+E3 -> Expression c_returnValue;.
+E3 -> c_returnNone;.
 
 Switchstmt -> _switch start_ c_switchStart switch ( Expression ) { Casestmts Defaultstmt } c_switchFinished _switch finished_ .
 
@@ -54,10 +54,10 @@ Casestmt -> case c_caseCheck num : Statementlist c_caseFinished.
 Defaultstmt -> default : Statementlist.
 Defaultstmt -> .
 
-Expression -> _check id_ id EXEXEX.
+Expression -> _push id_ id EXEXEX.
 Expression -> NewSimpleexpression.
 
-EXEXEX -> [ Expression ] c_computeIndex EZEZEZ | = Expression c_assign | NewVarcall F3 F2 E5.
+EXEXEX -> [ Expression ] _check id var_ c_computeIndex EZEZEZ | _check id var_ = Expression c_assign | NewVarcall F3 F2 E5.
 
 EZEZEZ -> = Expression c_assign | F3 F2 E5.
 
@@ -69,7 +69,7 @@ E5 -> .
 Relop -> == c_pushEquality .
 Relop -> < c_pushSmallerThan .
 
-Additiveexpression -> NewTerm F2 | _check id_ id Varcall F3 F2.
+Additiveexpression -> NewTerm F2 | _push id_ id Varcall F3 F2.
 
 NewAdditiveexpression -> NewTerm F2.
 
@@ -79,7 +79,7 @@ F2 -> .
 Addop -> + c_pushPlus .
 Addop -> - c_pushMinus .
 
-Term -> NewSignedfactor F3 | NewFactor F3 | _check id_ id Varcall F3.
+Term -> NewSignedfactor F3 | NewFactor F3 | _push id_ id Varcall F3.
 
 NewTerm -> NewSignedfactor F3 | NewFactor F3.
 
@@ -93,27 +93,27 @@ Signedfactor -> Factor.
 Signedfactor -> + Factor.
 Signedfactor -> - Factor c_negate .
 
-F4 -> , _fun args increase_ Expression F4.
+F4 -> , _fun args increase_ Expression c_copyArgument F4.
 F4 -> .
 
 NewFactor -> ( Expression ).
 NewFactor -> c_pushNum num .
 
 Factor -> ( Expression ).
-Factor -> _check id_ id Varcall.
+Factor -> _push id_ id Varcall.
 Factor -> c_pushNum num .
 
-NewVarcall -> _check id finished_.
-NewVarcall -> ( _fun args start_ Args _fun args finished_ ) c_return.
+NewVarcall -> .
+NewVarcall -> _check id fun_( _fun args start_ Args _fun args finished_ ) c_return.
 
-Varcall -> _check id finished_.
-Varcall -> [ Expression ] c_computeIndex _check id finished_.
-Varcall -> ( _fun args start_ Args _fun args finished_ ) c_return.
+Varcall -> .
+Varcall -> _check id var_ [ Expression ] c_computeIndex _check id finished_.
+Varcall -> _check id fun_( _fun args start_ Args _fun args finished_ ) c_return.
 
 Args -> Arglist.
 Args ->  .
 
-Arglist -> _fun args increase_ Expression F4.
+Arglist -> _fun args increase_ Expression c_copyArgument F4.
 
 Params -> _type(int)_ int _add id_ id _var_ Paramlist.
 Params -> void BB.

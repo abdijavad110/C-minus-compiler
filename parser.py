@@ -193,6 +193,7 @@ def program():
     if case2('Declarationlist') and declaration_list():
         if not case1('eof'):
             error(4, '')
+        c_file_finished()
         return success()  ##### finished
     return failure()
 
