@@ -13,7 +13,7 @@ AA -> Vardeclaration _var_.
 
 Vardeclaration -> E1.
 
-Fundeclaration -> _fun start_ ( Params ) _fun params end_ Compoundstmt _fun finished_.
+Fundeclaration -> _fun start_ c_ ( Params ) _fun params end_ Compoundstmt _fun finished_.
 
 E1 -> ;.
 E1 -> [ num ] ;.
@@ -41,8 +41,8 @@ Iterationstmt -> _while start_ while c_whileFirst ( Expression ) c_saveLabel Sta
 
 Returnstmt -> return E3.
 
-E3 -> Expression ;.
-E3 -> ;.
+E3 -> Expression c_;.
+E3 -> c_;.
 
 Switchstmt -> _switch start_ c_switchStart switch ( Expression ) { Casestmts Defaultstmt } c_switchFinished _switch finished_ .
 
@@ -57,7 +57,7 @@ Defaultstmt -> .
 Expression -> _check id_ id EXEXEX.
 Expression -> NewSimpleexpression.
 
-EXEXEX -> [ Expression ] EZEZEZ | = Expression c_assign | NewVarcall F3 F2 E5.
+EXEXEX -> [ Expression ] c_computeIndex EZEZEZ | = Expression c_assign | NewVarcall F3 F2 E5.
 
 EZEZEZ -> = Expression c_assign | F3 F2 E5.
 

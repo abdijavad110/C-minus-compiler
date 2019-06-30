@@ -63,7 +63,7 @@ def s_fun_start():
     depth += 1
     function_args = 0
     if sym_table.is_duplicate_free(stack.get()):
-        sym_table.add(stack.get(1), stack.get(), address=0)  # todo: function code address
+        sym_table.add(stack.get(1), stack.get(), address=PB.line)  # todo: function code address
     stack.pop(2)
     return True
 
@@ -85,9 +85,19 @@ def s_print_sym_table():
     print(sym_table)
 
 
-def s_check_id(a):
-    temp = sym_table.check_and_return_id(a, 1)
-    stack.push(temp)
+def s_push_id(a):
+    stack.push(a)
+    return True
+
+
+def s_check_id(fun_0):
+    a = stack.get()
+    stack.pop()
+    temp = sym_table.check_and_return_id(a, fun_0)
+    if fun_0 == 0:
+        stack.push(temp[1])
+    elif fun_0 == 1:
+        stack.push(temp)
     if temp is None:
         print(a + " is not defined")
         return True
@@ -106,13 +116,15 @@ def s_fun_args_start():
 
 
 def s_fun_args_finished():
-    args = sym_table.check_and_return_id(stack.get(), 0)
-    if args is None:
-        print(stack.get() + " is not defined")
-    elif args != function_args:
-        print("Mismatch in numbers of arguments of " + stack.get())
+    tt = sym_table.check_and_return_id(sym_table.get_name_by_address(stack.get(function_args)), 0)
+    # stack.push(addr)
+    if tt is None:
+        print(sym_table.get_name_by_address(stack.get()) + " is not defined")
+    elif tt[0] != function_args:
+        args = tt[0]
+        addr = tt[1]
+        print("Mismatch in numbers of arguments of " + sym_table.get_name_by_address(stack.get()))
         pass
-    stack.pop()  # if need function name delete it
 
 
 def s_fun_args_increase():

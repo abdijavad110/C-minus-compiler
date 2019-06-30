@@ -1,6 +1,10 @@
-1. (keyword, void) (id, a) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
-2. (keyword, int) (id, b) (symbol, [) (num, 10) (symbol, ]) (symbol, ;) 
-3. (keyword, int) (id, a) (symbol, ;) 
-4. (id, a) (symbol, =) (id, b) (symbol, [) (num, 1) (symbol, ]) (symbol, *) (num, 2) (symbol, +) (num, 3) (symbol, ;) 
-5. (symbol, }) 
-6. 
+1. (keyword, void) (id, fun) (symbol, () (keyword, int) (id, a) (symbol, ,) (keyword, int) (id, b) (symbol, [) (symbol, ]) (symbol, ,) (keyword, int) (id, c) (symbol, )) (symbol, {) 
+2. (id, a) (symbol, =) (id, c) (symbol, +) (id, b) (symbol, [) (num, 1) (symbol, ]) (symbol, ;) 
+3. (symbol, }) 
+4. (keyword, void) (id, main) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
+5. (keyword, int) (id, a) (symbol, ;) 
+6. (keyword, int) (id, b) (symbol, [) (num, 10) (symbol, ]) (symbol, ;) 
+7. (keyword, int) (id, c) (symbol, ;) 
+8. (id, fun) (symbol, () (id, a) (symbol, ,) (id, b) (symbol, ,) (id, c) (symbol, )) (symbol, ;) 
+9. (symbol, }) 
+10. 

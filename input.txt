@@ -1,5 +1,9 @@
-void a(void){
-    int b[10];
+void fun(int a, int b[], int c){
+    a = c + b[1];
+}
+void main(void){
     int a;
-    a = b[1]*2 + 3;
+    int b[10];
+    int c;
+    fun(a, b, c);
 }

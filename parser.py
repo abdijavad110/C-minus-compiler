@@ -427,7 +427,7 @@ def statement():
 
 def expression():
     tmp = cur_token_vec.name
-    if case1('id') and s_check_id(tmp):
+    if case1('id') and s_push_id(tmp):
         while not (case2('EXEXEX') and EXEXEX()):
             error(2, 'EXEXEX')
             if 'eps' not in first('EXEXEX') and cur_token in follow('EXEXEX'):
@@ -616,6 +616,7 @@ def default_stmt():
 
 def EXEXEX():
     if case1('['):
+        s_check_id(1)
         while not (case2('Expression') and expression()):
             error(2, 'Expression')
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
@@ -631,6 +632,7 @@ def EXEXEX():
                 break
         return success()
     if case1('='):
+        s_check_id(1)
         while not (case2('Expression') and expression()):
             error(2, 'Expression')
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
@@ -702,7 +704,7 @@ def additive_expression():
                 break
         return success()
     tmp = cur_token_vec.name
-    if case1('id') and s_check_id(tmp):
+    if case1('id') and s_push_id(tmp):
         while not (case2('Varcall') and var_call()):
             error(2, 'Varcall')
             if 'eps' not in first('Varcall') and cur_token in follow('Varcall'):
@@ -759,6 +761,7 @@ def EZEZEZ():
 
 def new_var_call():
     if case1('('):
+        s_check_id(0)
         s_fun_args_start()
         while not (case2('Args') and args()):
             error(2, 'Args')
@@ -771,6 +774,7 @@ def new_var_call():
         c_return()
         return success()
     if case3('NewVarcall'):
+        s_check_id(1)
         #s_check_id_finished()
         return success()
     return failure()
@@ -834,6 +838,7 @@ def F2():
 
 def var_call():
     if case1('['):
+        s_check_id(1)
         while not (case2('Expression') and expression()):
             error(2, 'Expression')
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
@@ -845,6 +850,7 @@ def var_call():
         #s_check_id_finished()
         return success()
     if case1('('):
+        s_check_id(0)
         s_fun_args_start()
         while not (case2('Args') and args()):
             error(2, 'Args')
@@ -857,7 +863,7 @@ def var_call():
         c_return()
         return success()
     if case3('NewVarcall'):
-        # s_check_id_finished()
+        s_check_id(1)
         return success()
     return failure()
 
@@ -953,7 +959,7 @@ def term():
                 break
         return success()
     tmp = cur_token_vec.name
-    if case1('id') and s_check_id(tmp):
+    if case1('id') and s_push_id(tmp):
         while not (case2('Varcall') and var_call()):
             error(2, 'Varcall')
             if 'eps' not in first('Varcall') and cur_token in follow('Varcall'):
@@ -979,7 +985,7 @@ def factor():
             error(1, ')')
         return success()
     tmp = cur_token_vec.name
-    if case1('id') and s_check_id(tmp):
+    if case1('id') and s_push_id(tmp):
         while not (case2('Varcall') and var_call()):
             error(2, 'Varcall')
             if 'eps' not in first('Varcall') and cur_token in follow('Varcall'):
