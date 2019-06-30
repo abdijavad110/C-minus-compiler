@@ -1003,6 +1003,7 @@ def factor():
 def arglist():
     s_fun_args_increase()
     if case2('Expression') and expression():
+        c_copy_argument()
         while not (case2('F4') and F4()):
             error(2, 'F4')
             if 'eps' not in first('F4') and cur_token in follow('F4'):
@@ -1020,6 +1021,7 @@ def F4():
             if 'eps' not in first('Expression') and cur_token in follow('Expression'):
                 error(3, 'Expression')
                 break
+        c_copy_argument()
         while not (case2('F4') and F4()):
             error(2, 'F4')
             if 'eps' not in first('F4') and cur_token in follow('F4'):

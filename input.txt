@@ -1,10 +1,11 @@
-void fun(int a, int b[], int c){
-    c = a + a;
-    return c;
+int fun(int a){
+    return a;
+}
+int fun2(int a){
+    return fun(a);
 }
 void main(void){
     int a;
-    int b[10];
     int c;
-    fun(a, b, c);
+    c = fun2(a);
 }

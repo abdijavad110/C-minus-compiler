@@ -124,8 +124,9 @@ def s_fun_args_finished():
     elif tt[0] != function_args:
         args = tt[0]
         addr = tt[1]
-        print("Mismatch in numbers of arguments of " + sym_table.get_name_by_address(stack.get()))
+        print("Mismatch in numbers of arguments of " + sym_table.get_name_by_address(stack.get(function_args)))
         pass
+    stack.pop(function_args)
 
 
 def s_fun_args_increase():
@@ -174,6 +175,15 @@ def c_return_with_value():
     stack.pop()
 
 
+def c_copy_argument():
+    lv_address = sym_table.get_lv_by_name(sym_table.get_name_by_address(stack.get(function_args)))
+    if sym_table.get_type_by_address(stack.get()) == 'int':
+        PB.addInstruction('ASSIGN', stack.get(), lv_address+4+4*function_args, None)
+    else:
+        PB.addInstruction('ASSIGN', '#'+str(stack.get()), lv_address+4+4*function_args, None)
+    # stack.pop()
+
+
 def c_return_none():
     lv_address = sym_table.get_lv_by_name(stack.get())
     PB.addInstruction('JP', '@'+str(lv_address + 4), None, None)
@@ -205,12 +215,18 @@ def c_computeIndex():
     # stack.push(temp)
 
 
-# TODO
 # Varcall -> (Args) #
 def c_return():
-    temp = sym_table.getTemp()
-    # function call and store result
-    stack.push(temp)
+    lv_address = sym_table.get_lv_by_name(sym_table.get_name_by_address(stack.get()))
+    address = sym_table.check_and_return_id(sym_table.get_name_by_address(stack.get()), 0)[1]
+    PB.addInstruction('ASSIGN', PB.line+2, lv_address+4, None)
+    PB.addInstruction('JP', '#'+str(address), None, None)
+    tmp = stack.get()
+    stack.pop()
+    if sym_table.get_type_by_address(tmp):
+        t = sym_table.getTemp()
+        PB.addInstruction('ASSIGN', lv_address, t, None)    # todo: dorost assign kardam ?
+        stack.push(t)
 
 
 # Factor -> #pushNum num

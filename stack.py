@@ -1,4 +1,4 @@
-print_stack = False
+print_stack = True
 
 
 class Stack:

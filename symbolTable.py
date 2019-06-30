@@ -97,3 +97,4 @@ class SymbolTable:
         for i in range(len(self.array) - 1, -1, -1):
             if self.array[i].e_id == name and self.array[i].depth is None:
                 return self.array[i].lv_address
+
