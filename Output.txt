@@ -1,12 +1,21 @@
-1. (keyword, int) (id, f) (symbol, () (keyword, int) (id, a) (symbol, ,) (keyword, int) (id, b) (symbol, )) (symbol, {) 
-2. (keyword, return) (id, a) (symbol, ;) 
-3. (symbol, }) 
+1. (keyword, int) (id, global) (symbol, ;) 
+2. 
+3. (keyword, int) (id, f) (symbol, () (keyword, int) (id, a) (symbol, ,) (keyword, int) (id, b) (symbol, )) (symbol, {) 
 4. 
-5. (keyword, int) (id, g) (symbol, () (keyword, int) (id, a) (symbol, )) (symbol, {) 
-6. (keyword, return) (id, a) (symbol, ;) 
-7. (symbol, }) 
-8. 
-9. (keyword, void) (id, main) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
-10. (keyword, int) (id, a) (symbol, ;) (keyword, int) (id, b) (symbol, ;) 
-11. (id, g) (symbol, () (id, f) (symbol, () (id, a) (symbol, ,) (id, b) (symbol, )) (symbol, )) (symbol, ;) 
-12. (symbol, }) 
+5. (symbol, }) 
+6. 
+7. (keyword, int) (id, g) (symbol, () (keyword, int) (id, a) (symbol, )) (symbol, {) 
+8. (keyword, return) (id, a) (symbol, ;) 
+9. (symbol, }) 
+10. 
+11. (keyword, void) (id, main) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
+12. (keyword, int) (id, a) (symbol, ;) (id, a) (symbol, =) (num, 2) (symbol, ;) 
+13. (keyword, switch) (symbol, () (id, a) (symbol, )) (symbol, {) 
+14. (id, casr) (num, 1) (symbol, :) (id, a) (symbol, =) (num, 10) (symbol, ;) 
+15. (keyword, break) (symbol, ;) 
+16. (keyword, case) (num, 2) (symbol, :) (id, a) (symbol, =) (num, 20) (symbol, ;) 
+17. (keyword, break) (symbol, ;) 
+18. (keyword, default) (symbol, :) (id, a) (symbol, =) (num, 0) (symbol, ;) 
+19. 
+20. (symbol, }) 
+21. (symbol, }) 

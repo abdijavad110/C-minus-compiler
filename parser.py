@@ -195,6 +195,7 @@ def program():
         if not case1('eof'):
             error(4, '')
         print(sym_table)
+        have_main()
         c_file_finished()
         # print(PB.get_generated_code())
         PB.export_generated_code()
@@ -1074,6 +1075,7 @@ def translate_token(token_vec):
 
 
 if __name__ == '__main__':
+    function_args_stack.push(0)
     initialize_lexer()
     parse_tree = [[0, 'program']]
     error_string = []

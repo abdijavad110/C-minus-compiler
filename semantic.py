@@ -17,6 +17,7 @@ def initialize_semantic_analyzer():
     depth = 0
     stack.clear()
     sym_table.clear()
+
     return True
 
 
@@ -103,16 +104,19 @@ def s_check_id(fun_0):
     a = stack.get()
     stack.pop()
     temp = sym_table.check_and_return_id(a, fun_0)
-    if fun_0 == 0:
-        stack.push(temp[1])
-    elif fun_0 == 1:
-        stack.push(temp)
+    # print(temp)
+
     if temp is None:
         print(a + " is not defined")
         return True
     else:
+        if fun_0 == 0:
+            stack.push(temp[1])
+        elif fun_0 == 1:
+            stack.push(temp)
         pass  # todo: push id to semantic stack
         return True
+
 
 
 def s_check_id_finished():
@@ -194,6 +198,8 @@ def c_return_with_value():
     if stack.get() == 'main':
         return True
     lv_address = sym_table.get_lv_by_name(stack.get(1))
+    if lv_address == None:
+        return
     PB.addInstruction('ASSIGN', stack.get(), lv_address, None)
     PB.addInstruction('JP', '@'+str(lv_address + 4), None, None)
     stack.pop()
@@ -410,4 +416,8 @@ def c_continue():
 def c_break():
     PB.addInstruction("JP", stack.get(3) - 1, None, None)
 
-
+def have_main():
+    for entry in sym_table.array:
+        if entry.e_id == 'main' and entry.e_type == 'void':
+            return True
+    print('main function not found!')

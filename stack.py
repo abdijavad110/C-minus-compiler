@@ -7,6 +7,8 @@ class Stack:
 
     def pop(self, n=1):
         for i in range(n):
+            if(len(self.array) == 0):
+                return
             self.array.pop()
         if print_stack:
             print("......pop :" + str(self))
