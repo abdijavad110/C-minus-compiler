@@ -3,9 +3,11 @@ from symbolTable import SymbolTable
 from ProgramBlock import ProgramBlock
 
 depth = 0
+function_args_stack = Stack()
 function_args = 0
 stack = Stack()
 sym_table = SymbolTable()
+have_error = False
 
 PB = ProgramBlock()
 
@@ -33,7 +35,11 @@ def s_var():
     if stack.get(1) != 'void':
         if sym_table.is_duplicate_free(stack.get(), depth):
             sym_table.add('int', stack.get(), depth=depth)
-            function_args += 1
+            temp = function_args_stack.get()
+            temp += 1
+            function_args_stack.pop(1)
+            function_args_stack.push(temp)
+            # function_args += 1
     else:
         print('illegal type of void')
     stack.pop(2)
@@ -61,7 +67,8 @@ def s_ptr():
 def s_fun_start():
     global depth, function_args
     depth += 1
-    function_args = 0
+    function_args_stack.push(0)
+    # function_args = 0
     if sym_table.is_duplicate_free(stack.get()):
         sym_table.add(stack.get(1), stack.get(), address=PB.line)
     # stack.pop(2)
@@ -73,13 +80,14 @@ def s_fun_finished():
     global depth
     depth = 0
     stack.pop(2)
+    function_args_stack.pop(1)
     return True
 
 
 def s_fun_parameters_finished():
     global function_args
-    sym_table.set_fun_args(function_args)
-    function_args = 0
+    sym_table.set_fun_args(function_args_stack.get())
+    # function_args_stack.pop(1)
 
 
 def s_print_sym_table():
@@ -113,25 +121,33 @@ def s_check_id_finished():
 
 def s_fun_args_start():
     global function_args
-    function_args = 0
+    function_args_stack.push(0)
+    # function_args = 0
 
 
 def s_fun_args_finished():
-    tt = sym_table.check_and_return_id(sym_table.get_name_by_address(stack.get(function_args)), 0)
+    tt = sym_table.check_and_return_id(sym_table.get_name_by_address(stack.get(function_args_stack.get())), 0)
+    print('****', tt)
+    # function_args_stack.pop(1)
     # stack.push(addr)
     if tt is None:
         print(sym_table.get_name_by_address(stack.get()) + " is not defined")
-    elif tt[0] != function_args:
+    elif tt[0] != function_args_stack.get():
         args = tt[0]
         addr = tt[1]
-        print("Mismatch in numbers of arguments of " + sym_table.get_name_by_address(stack.get(function_args)))
+        print("Mismatch in number of arguments of " + sym_table.get_name_by_address(stack.get(function_args_stack.get())))
         pass
-    stack.pop(function_args)
+    stack.pop(function_args_stack.get())
+    function_args_stack.pop(1)
 
 
 def s_fun_args_increase():
     global function_args
-    function_args += 1
+    temp = function_args_stack.get()
+    temp += 1
+    function_args_stack.pop(1)
+    function_args_stack.push(temp)
+    # function_args += 1
 
 
 def s_switch_start(lno):
@@ -184,15 +200,16 @@ def c_return_with_value():
 
 
 def c_copy_argument():
-    fun_name = sym_table.get_name_by_address(stack.get(function_args))
+    fun_name = sym_table.get_name_by_address(stack.get(function_args_stack.get()))
     lv_address = sym_table.get_lv_by_name(fun_name)
+    print('***************', lv_address, fun_name)
     if fun_name == 'output':
         PB.addInstruction('ASSIGN', stack.get(), lv_address, None)
         return True
     if sym_table.get_type_by_address(stack.get()) == 'int':
-        PB.addInstruction('ASSIGN', stack.get(), lv_address+4+4*function_args, None)
+        PB.addInstruction('ASSIGN', stack.get(), lv_address+4+4*function_args_stack.get(), None)
     else:
-        PB.addInstruction('ASSIGN', '#'+str(stack.get()), lv_address+4+4*function_args, None)
+        PB.addInstruction('ASSIGN', str(stack.get()), lv_address+4+4*function_args_stack.get(), None)
     # stack.pop()
 
 
@@ -238,7 +255,7 @@ def c_return():
         return True
     address = sym_table.check_and_return_id(fun_name, 0)[1]
     PB.addInstruction('ASSIGN', PB.line+2, lv_address+4, None)
-    PB.addInstruction('JP', '#'+str(address), None, None)
+    PB.addInstruction('JP', str(address), None, None)
     tmp = stack.get()
     stack.pop()
     if sym_table.get_type_by_address(tmp):
@@ -394,4 +411,3 @@ def c_break():
     PB.addInstruction("JP", stack.get(3) - 1, None, None)
 
 
-#

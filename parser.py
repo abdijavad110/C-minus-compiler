@@ -157,6 +157,7 @@ def case3(state):
 
 
 def error(type_of_error, arg):
+    have_error = True
     print(cur_token_vec.line_number, type_of_error, arg)
     global error_string
     if type_of_error == 1:
@@ -193,7 +194,10 @@ def program():
     if case2('Declarationlist') and declaration_list():
         if not case1('eof'):
             error(4, '')
+        print(sym_table)
         c_file_finished()
+        # print(PB.get_generated_code())
+        PB.export_generated_code()
         return success()  ##### finished
     return failure()
 
@@ -392,6 +396,7 @@ def compound_stmt():
                 break
         if not case1('}'):
             error(1, '}')
+        # c_return_none()
         return success()
     return failure()
 
@@ -561,12 +566,13 @@ def selection_stmt():
 
 def E3():
     if case2('Expression') and expression():
+        # c_return_none()
         c_return_with_value()
         if not case1(';'):
             error(1, ';')
         return success()
     if case1(';'):
-        c_return_none()
+        # c_return_none()
         return success()
     return failure()
 
@@ -1078,3 +1084,9 @@ if __name__ == '__main__':
     program()
     export_parse_tree()
     export_error_file()
+    if not have_error:
+        PB.export_generated_code()
+    else :
+        file = open('output.txt', 'w')
+        file.write('')
+        file.close()

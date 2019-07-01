@@ -28,6 +28,18 @@ class ProgramBlock:
         for _ in range(num):
             self.addInstruction(None, None, None, None)
 
+    def get_generated_code(self):
+        mystr = ''
+        for i in range(self.line):
+            mystr += str(i) + ' ' + self.array[i].__str__() + '\n'
+        return mystr
+
+    def export_generated_code(self):
+        text = self.get_generated_code()
+        file = open('output.txt', 'w')
+        file.write(text)
+        file.close()
+
 
 class Instruction:
     def __init__(self, op, opr1, opr2, dest):
