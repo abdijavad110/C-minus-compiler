@@ -26,7 +26,7 @@ def s_type(arg):
     return True
 
 
-def s_add_id(arg):
+def s_add_id(arg, t=1):
     stack.push(arg)
     return True
 
@@ -217,7 +217,7 @@ def c_copy_argument():
     if sym_table.get_type_by_address(stack.get()) == 'int':
         PB.addInstruction('ASSIGN', stack.get(), lv_address+4+4*function_args_stack.get(), None)
     else:
-        PB.addInstruction('ASSIGN', str(stack.get()), lv_address+4+4*function_args_stack.get(), None)
+        PB.addInstruction('ASSIGN', '#'+str(stack.get()), lv_address+4+4*function_args_stack.get(), None)
     # stack.pop()
 
 
@@ -243,7 +243,10 @@ def c_computeIndex():
     stack.pop(1)
     temp4 = sym_table.getTemp()
     # check_type(stack.get(), temp3)
-    PB.addInstruction('ADD', '#' + str(stack.get()), temp3, temp4)
+    if sym_table.get_type_by_address(stack.get()) == 'int*':
+        PB.addInstruction('ADD', '#' + str(stack.get()), temp3, temp4)
+    else:
+        PB.addInstruction('ADD', str(stack.get()), temp3, temp4)
     stack.pop(1)
     stack.push('@' + str(temp4))
 
@@ -265,7 +268,7 @@ def c_return():
         return True
     address = sym_table.check_and_return_id(fun_name, 0)[1]
 
-    PB.addInstruction('ASSIGN', PB.line+2, lv_address+4, None)
+    PB.addInstruction('ASSIGN', '#' + str(PB.line+2), lv_address+4, None)
     PB.addInstruction('JP', str(address), None, None)
     tmp = stack.get()
     stack.pop()

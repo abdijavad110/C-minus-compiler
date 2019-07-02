@@ -379,6 +379,7 @@ def F1():
 def E2():
     if case1('['):
         if case1(']'):
+            # s_ptr()
             return success()
         else:
             error(1, ']')

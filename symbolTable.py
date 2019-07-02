@@ -1,4 +1,4 @@
-print_table = False
+print_table = True
 
 
 class TableEntry:
