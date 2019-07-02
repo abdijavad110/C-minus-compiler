@@ -449,8 +449,8 @@ def expression_stmt():
     if case1(';'):
         return success()
     if case1('break'):
-        s_break()
-        c_break()
+        if s_break():
+            c_break()
         if not case1(';'):
             error(1, ';')
         return success()

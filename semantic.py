@@ -166,6 +166,8 @@ def s_break():
     dest = stack.check_and_return_control_statement(True)
     if dest is None:
         print("No ’while’ or ’switch’ found for ’break’.")
+        return False
+    return True
     # todo: generate break code
 
 

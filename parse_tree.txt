@@ -2,149 +2,56 @@ program
 |	Declarationlist
 |	|	Declaration
 |	|	|	Typespecifier
-|	|	|	|	'int'
+|	|	|	|	'void'
 |	|	|	'id'
 |	|	|	AA
-|	|	|	|	Vardeclaration
-|	|	|	|	|	E1
-|	|	|	|	|	|	';'
-|	|	Declarationlist
-|	|	|	Declaration
-|	|	|	|	Typespecifier
-|	|	|	|	|	'int'
-|	|	|	|	'id'
-|	|	|	|	AA
-|	|	|	|	|	Fundeclaration
-|	|	|	|	|	|	'('
-|	|	|	|	|	|	Params
-|	|	|	|	|	|	|	'int'
-|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	Paramlist
-|	|	|	|	|	|	|	|	E2
-|	|	|	|	|	|	|	|	F1
-|	|	|	|	|	|	|	|	|	','
-|	|	|	|	|	|	|	|	|	Typespecifier
-|	|	|	|	|	|	|	|	|	|	'int'
-|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	E2
-|	|	|	|	|	|	|	|	|	F1
-|	|	|	|	|	|	')'
-|	|	|	|	|	|	Compoundstmt
-|	|	|	|	|	|	|	'{'
-|	|	|	|	|	|	|	Declarationlist
-|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	'}'
-|	|	|	Declarationlist
-|	|	|	|	Declaration
-|	|	|	|	|	Typespecifier
-|	|	|	|	|	|	'int'
-|	|	|	|	|	'id'
-|	|	|	|	|	AA
-|	|	|	|	|	|	Fundeclaration
-|	|	|	|	|	|	|	'('
-|	|	|	|	|	|	|	Params
-|	|	|	|	|	|	|	|	'int'
+|	|	|	|	Fundeclaration
+|	|	|	|	|	'('
+|	|	|	|	|	Params
+|	|	|	|	|	|	'void'
+|	|	|	|	|	|	BB
+|	|	|	|	|	')'
+|	|	|	|	|	Compoundstmt
+|	|	|	|	|	|	'{'
+|	|	|	|	|	|	Declarationlist
+|	|	|	|	|	|	|	Declaration
+|	|	|	|	|	|	|	|	Typespecifier
+|	|	|	|	|	|	|	|	|	'int'
 |	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	Paramlist
-|	|	|	|	|	|	|	|	|	E2
-|	|	|	|	|	|	|	|	|	F1
-|	|	|	|	|	|	|	')'
-|	|	|	|	|	|	|	Compoundstmt
-|	|	|	|	|	|	|	|	'{'
-|	|	|	|	|	|	|	|	Declarationlist
-|	|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	|	|	Returnstmt
-|	|	|	|	|	|	|	|	|	|	|	'return'
-|	|	|	|	|	|	|	|	|	|	|	E3
-|	|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	AA
+|	|	|	|	|	|	|	|	|	Vardeclaration
+|	|	|	|	|	|	|	|	|	|	E1
+|	|	|	|	|	|	|	|	|	|	|	';'
+|	|	|	|	|	|	|	Declarationlist
+|	|	|	|	|	|	Statementlist
+|	|	|	|	|	|	|	Statement
+|	|	|	|	|	|	|	|	Expressionstmt
+|	|	|	|	|	|	|	|	|	Expression
+|	|	|	|	|	|	|	|	|	|	'id'
+|	|	|	|	|	|	|	|	|	|	EXEXEX
+|	|	|	|	|	|	|	|	|	|	|	'='
+|	|	|	|	|	|	|	|	|	|	|	Expression
+|	|	|	|	|	|	|	|	|	|	|	|	NewSimpleexpression
+|	|	|	|	|	|	|	|	|	|	|	|	|	NewAdditiveexpression
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewTerm
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewFactor
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'num'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
 |	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	'}'
-|	|	|	|	Declarationlist
-|	|	|	|	|	Declaration
-|	|	|	|	|	|	Typespecifier
-|	|	|	|	|	|	|	'void'
-|	|	|	|	|	|	'id'
-|	|	|	|	|	|	AA
-|	|	|	|	|	|	|	Fundeclaration
-|	|	|	|	|	|	|	|	'('
-|	|	|	|	|	|	|	|	Params
-|	|	|	|	|	|	|	|	|	'void'
-|	|	|	|	|	|	|	|	|	BB
-|	|	|	|	|	|	|	|	')'
-|	|	|	|	|	|	|	|	Compoundstmt
-|	|	|	|	|	|	|	|	|	'{'
-|	|	|	|	|	|	|	|	|	Declarationlist
-|	|	|	|	|	|	|	|	|	|	Declaration
-|	|	|	|	|	|	|	|	|	|	|	Typespecifier
-|	|	|	|	|	|	|	|	|	|	|	|	'int'
+|	|	|	|	|	|	|	|	|	|	|	|	|	E5
+|	|	|	|	|	|	|	|	|	';'
+|	|	|	|	|	|	|	Statementlist
+|	|	|	|	|	|	|	|	Statement
+|	|	|	|	|	|	|	|	|	Expressionstmt
+|	|	|	|	|	|	|	|	|	|	Expression
 |	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	AA
-|	|	|	|	|	|	|	|	|	|	|	|	Vardeclaration
-|	|	|	|	|	|	|	|	|	|	|	|	|	E1
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	|	|	|	Declarationlist
-|	|	|	|	|	|	|	|	|	|	|	Declaration
-|	|	|	|	|	|	|	|	|	|	|	|	Typespecifier
-|	|	|	|	|	|	|	|	|	|	|	|	|	'int'
-|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	AA
-|	|	|	|	|	|	|	|	|	|	|	|	|	Vardeclaration
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	E1
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	|	|	|	|	Declarationlist
-|	|	|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	|	|	|	Expressionstmt
-|	|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'('
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Args
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Arglist
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'('
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Args
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Arglist
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F4
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	','
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F4
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	')'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F4
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	')'
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	|	|	|	Statementlist
-|	|	|	|	|	|	|	|	|	'}'
-|	|	|	|	|	Declarationlist
+|	|	|	|	|	|	|	|	|	|	|	EXEXEX
+|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
+|	|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	|	|	|	|	F2
+|	|	|	|	|	|	|	|	|	|	|	|	E5
+|	|	|	|	|	|	|	|	|	|	';'
+|	|	|	|	|	|	|	|	Statementlist
+|	|	|	|	|	|	'}'
+|	|	Declarationlist
 |	'eof'

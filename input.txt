@@ -1,21 +1,5 @@
-int global;
-
-int f(int a, int b){
-
-}
-
-int g(int a){
-    return a;
-}
 
 void main(void){
     int a; a = 2;
-    switch (a){
-        casr 1:a = 10;
-         break;
-         case 2:a = 20;
-         break;
-         default: a = 0;
-         
-    }
+    void b;
 }

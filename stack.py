@@ -28,7 +28,8 @@ class Stack:
         for i in range(len(self.array) - 1, -1, -1):
             entry = self.array[i]
             if type(entry) == type(self.array) and (entry[0] == 'while' or (is_break and entry[0] == 'switch')):
-                return entry[i][1]
+                # return entry[i][1]
+                return entry[1]
         return None
 
     def __str__(self):
