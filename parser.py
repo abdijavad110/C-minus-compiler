@@ -217,7 +217,7 @@ def declaration_list():
 
 
 def declaration():
-    # print('hi')
+    print('hi')
     if case2('Typespecifier') and type_specifier():
         s_add_id(cur_token_vec.name)
         if not case1('id'):
@@ -270,6 +270,7 @@ def fun_declaration():
 
 
 def var_declaration():
+    print('hi vardec')
     if case2('E1') and E1():
         return success()
     return failure()
@@ -296,6 +297,7 @@ def E1():
 
 
 def params():
+    # print('hi params')
     if case1('int'):
         s_type('int')
         s_add_id(cur_token_vec.name)
@@ -346,6 +348,7 @@ def param_list():
 
 
 def F1():
+    # print('hi f1')
     if case1(','):
         while not(case2('Typespecifier') and type_specifier()):
             error(2, 'Typespecifier')
@@ -611,6 +614,7 @@ def case_stmt():
 
 def default_stmt():
     if case1('default'):
+        c_repair_default()
         if not case1(':'):
             error(1, ':')
         while not (case2('Statementlist') and statement_list()):

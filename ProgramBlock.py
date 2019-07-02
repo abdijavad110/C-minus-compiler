@@ -31,7 +31,7 @@ class ProgramBlock:
     def get_generated_code(self):
         mystr = ''
         for i in range(self.line):
-            mystr += str(i) + ' ' + self.array[i].__str__() + '\n'
+            mystr += str(i) + '\t' + self.array[i].__str__() + '\n'
         return mystr
 
     def export_generated_code(self):

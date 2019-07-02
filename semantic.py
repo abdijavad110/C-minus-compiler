@@ -238,9 +238,12 @@ def c_computeIndex():
     temp2 = sym_table.getTemp()
     PB.addInstruction('ASSIGN', '#' + str(4), temp2, None)
     temp3 = sym_table.getTemp()
+    check_type(stack.get(), temp2)
     PB.addInstruction('MULT', stack.get(), temp2, temp3)
     stack.pop(1)
     temp4 = sym_table.getTemp()
+    check_type(stack.get(), temp3)
+    check_type(stack.get(), temp3)
     PB.addInstruction('ADD', stack.get(), temp3, temp4)
     stack.pop(1)
     stack.push('@' + str(temp4))
@@ -262,6 +265,7 @@ def c_return():
         PB.addInstruction('PRINT', lv_address, None, None)
         return True
     address = sym_table.check_and_return_id(fun_name, 0)[1]
+
     PB.addInstruction('ASSIGN', PB.line+2, lv_address+4, None)
     PB.addInstruction('JP', str(address), None, None)
     tmp = stack.get()
@@ -282,6 +286,7 @@ def c_pushNum(num):
 # F3 -> *signed factor #mult
 def c_mult():
     temp = sym_table.getTemp()
+    check_type(stack.get(), stack.get(1))
     PB.addInstruction("MULT", stack.get(), stack.get(1), temp)
     stack.pop(2)
     stack.push(temp)
@@ -289,6 +294,7 @@ def c_mult():
 
 # signedfactor -> - factor #?
 def c_negate():
+    check_type(stack.get(), 1000)
     PB.addInstruction("SUB", "#" + str(0), stack.get(), stack.get())
 
 
@@ -305,6 +311,7 @@ def c_pushMinus():
 # F2 -> addop term #add F2
 def c_add_or_sub():
     temp = sym_table.getTemp()
+    check_type(stack.get(), stack.get(2))
     if stack.get(1) == "+":
         PB.addInstruction("ADD", stack.get(), stack.get(2), temp)
     else:
@@ -339,6 +346,7 @@ def c_pushComparison():
 # EXEXEX -> = Expression #
 def c_assign():
     temp = stack.get()
+    check_type(stack.get(), stack.get(1))
     PB.addInstruction("ASSIGN", stack.get(), stack.get(1), None)
     stack.pop(2)
     stack.push(temp)
@@ -423,3 +431,40 @@ def have_main():
         if entry.e_id == 'main' and entry.e_type == 'void':
             return True
     print('main function not found!')
+
+def check_type(opr1, opr2):
+    # if type(opr1) is str:
+    #     print('fuck')
+    #     if type(opr2) is str:
+    #         return True
+    #     if opr2 < 1000:
+    #         type2 = sym_table.get_type_by_address(opr2)
+    #         if type2 == 'int*':
+    #             print('Type mismatch in operands')
+    #             return False
+    #     return True
+    #
+    # if type(opr2) is str:
+    #     if opr1 < 1000:
+    #         type2 = sym_table.get_type_by_address(opr2)
+    #         if type2 == 'int*':
+    #             print('Type mismatch in operands')
+    #             return False
+    #     return True
+    #
+    # if opr1 < 1000:
+    #     type1 = sym_table.get_type_by_address(opr1)
+    #     if(type1 == 'int*'):
+    #         print('Type mismatch in operands')
+    #         return False
+    #
+    # if opr2 < 1000:
+    #     type2 = sym_table.get_type_by_address(opr2)
+    #     if type2 == 'int*':
+    #         print('Type mismatch in operands')
+    #         return False
+    # return True
+    pass
+
+def c_repair_default():
+    PB.addInstruction('JP', PB.line, None, None)

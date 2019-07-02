@@ -104,7 +104,7 @@ def handle_buffer(buffer):
 #        "b = a < cde;\n\t\t\t{cde = @2;\n\t\t}}\n\t\t" \
 #        "return;\n}"
 file = open("input.txt", "r")
-output_file = open("Output.txt", "w")
+output_file = open("lexer_output.txt", "w")
 error_file = open("Error.txt", "w")
 text = file.read()
 text_size = len(text)

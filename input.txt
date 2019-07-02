@@ -1,5 +1,10 @@
 
 void main(void){
     int a;
-    a = a - 1;
+    a = 2;
+    switch (a){
+        case 1:a = a - 1; break;
+        case 2: a = a - 2; break;
+        default: a = a;
+    }
 }

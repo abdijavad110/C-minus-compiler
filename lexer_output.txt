@@ -1,0 +1,11 @@
+1. 
+2. (keyword, void) (id, main) (symbol, () (keyword, void) (symbol, )) (symbol, {) 
+3. (keyword, int) (id, a) (symbol, ;) 
+4. (id, a) (symbol, =) (num, 2) (symbol, ;) 
+5. (keyword, switch) (symbol, () (id, a) (symbol, )) (symbol, {) 
+6. (keyword, case) (num, 1) (symbol, :) (id, a) (symbol, =) (id, a) (symbol, -) (num, 1) (symbol, ;) (keyword, break) (symbol, ;) 
+7. (keyword, case) (num, 2) (symbol, :) (id, a) (symbol, =) (id, a) (symbol, -) (num, 2) (symbol, ;) (keyword, break) (symbol, ;) 
+8. (keyword, default) (symbol, :) (id, a) (symbol, =) (id, a) (symbol, ;) 
+9. (symbol, }) 
+10. (symbol, }) 
+11. 

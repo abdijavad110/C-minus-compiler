@@ -1,2 +1,3 @@
-str = '123'
-print(int(str))
+mystr = '123'
+if type(mystr) is str:
+    print('yes')
