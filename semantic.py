@@ -308,7 +308,7 @@ def c_add_or_sub():
     if stack.get(1) == "+":
         PB.addInstruction("ADD", stack.get(), stack.get(2), temp)
     else:
-        PB.addInstruction("SUB", stack.get(), stack.get(2), temp)
+        PB.addInstruction("SUB", stack.get(2), stack.get(), temp)
 
     stack.pop(3)
     stack.push(temp)

@@ -217,6 +217,7 @@ def declaration_list():
 
 
 def declaration():
+    # print('hi')
     if case2('Typespecifier') and type_specifier():
         s_add_id(cur_token_vec.name)
         if not case1('id'):
