@@ -283,13 +283,17 @@ def E1():
     if case1('['):
         # if cur_token == 'num':
         #     stack.push(int(cur_token_vec.name))
+        if(cur_token == 'num'):
+            temp_num = int(cur_token_vec.name)
         if not case1('num'):
             error(1, 'num')
+
         if not case1(']'):
             error(1, ']')
         if not case1(';'):
             error(1, ';')
         s_ptr()
+        sym_table.var_address += temp_num * 4 - 4
 
         # print(sym_table)
         return success()
