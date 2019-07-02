@@ -380,6 +380,7 @@ def E2():
     if case1('['):
         if case1(']'):
             s_ptr()
+            s_was_a_argument()
             return success()
         else:
             error(1, ']')

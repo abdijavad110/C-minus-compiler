@@ -9,6 +9,10 @@ class TableEntry:
         self.address = address  # address of variable or code
         self.args = args
         self.lv_address = lv_address
+        self.is_argument = False
+
+    def was_a_argument(self):
+        self.is_argument = True
 
     def __str__(self):
         if self.depth is None:
@@ -49,6 +53,9 @@ class SymbolTable:
         if print_table:
             print("sth added\n" + str(self))
 
+    def was_a_argument(self):
+        self.array[len(self.array)-1].was_a_argument()
+
     def is_duplicate_free(self, e_id, depth=None):
         for entry in self.array:
             if entry.depth == depth and entry.e_id == e_id:
@@ -66,6 +73,11 @@ class SymbolTable:
 
     def clear(self):
         self.array = []
+
+    def is_arg(self, address):
+        for i in range(len(self.array) - 1, -1, -1):
+            if self.array[i].depth is not None and self.array[i].address == address:
+                return self.array[i].is_argument
 
     def check_and_return_id(self, a, t):  # t=0 for fun & 1 for vars
         if t == 1:

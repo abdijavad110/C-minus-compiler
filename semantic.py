@@ -186,6 +186,10 @@ def s_switch_finished():
     stack.pop()
 
 
+def s_was_a_argument():
+    sym_table.was_a_argument()
+
+
 def c_file_finished():
     args = sym_table.check_and_return_id('main', 0)
     if args is not None:
@@ -243,7 +247,7 @@ def c_computeIndex():
     stack.pop(1)
     temp4 = sym_table.getTemp()
     # check_type(stack.get(), temp3)
-    if sym_table.get_type_by_address(stack.get()) == 'int*':
+    if not sym_table.is_arg(stack.get()):
         PB.addInstruction('ADD', '#' + str(stack.get()), temp3, temp4)
     else:
         PB.addInstruction('ADD', str(stack.get()), temp3, temp4)

@@ -19,15 +19,6 @@ program
 |	|	|	|	|	Compoundstmt
 |	|	|	|	|	|	'{'
 |	|	|	|	|	|	Declarationlist
-|	|	|	|	|	|	|	Declaration
-|	|	|	|	|	|	|	|	Typespecifier
-|	|	|	|	|	|	|	|	|	'int'
-|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	AA
-|	|	|	|	|	|	|	|	|	Vardeclaration
-|	|	|	|	|	|	|	|	|	|	E1
-|	|	|	|	|	|	|	|	|	|	|	';'
-|	|	|	|	|	|	|	Declarationlist
 |	|	|	|	|	|	Statementlist
 |	|	|	|	|	|	|	Statement
 |	|	|	|	|	|	|	|	Expressionstmt
@@ -64,19 +55,35 @@ program
 |	|	|	|	|	|	|	|	|	';'
 |	|	|	|	|	|	|	Statementlist
 |	|	|	|	|	|	|	|	Statement
-|	|	|	|	|	|	|	|	|	Expressionstmt
-|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	'='
-|	|	|	|	|	|	|	|	|	|	|	|	Expression
-|	|	|	|	|	|	|	|	|	|	|	|	|	'id'
-|	|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
-|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewVarcall
+|	|	|	|	|	|	|	|	|	Returnstmt
+|	|	|	|	|	|	|	|	|	|	'return'
+|	|	|	|	|	|	|	|	|	|	E3
+|	|	|	|	|	|	|	|	|	|	|	Expression
+|	|	|	|	|	|	|	|	|	|	|	|	'id'
+|	|	|	|	|	|	|	|	|	|	|	|	EXEXEX
+|	|	|	|	|	|	|	|	|	|	|	|	|	'['
+|	|	|	|	|	|	|	|	|	|	|	|	|	Expression
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewSimpleexpression
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewAdditiveexpression
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewTerm
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewFactor
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'num'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
+|	|	|	|	|	|	|	|	|	|	|	|	|	']'
+|	|	|	|	|	|	|	|	|	|	|	|	|	EZEZEZ
 |	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
 |	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Addop
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'+'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	Term
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	NewFactor
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	'num'
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F3
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	F2
 |	|	|	|	|	|	|	|	|	|	|	|	|	|	E5
-|	|	|	|	|	|	|	|	|	|	';'
+|	|	|	|	|	|	|	|	|	|	|	';'
 |	|	|	|	|	|	|	|	Statementlist
 |	|	|	|	|	|	'}'
 |	|	Declarationlist
