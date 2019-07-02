@@ -303,8 +303,8 @@ def params():
         s_add_id(cur_token_vec.name)
         if not case1('id'):
             error(1, 'id')
-        else:
-            s_var()
+        # else:
+        #     s_var()
         while not(case2('Paramlist') and param_list()):
             error(2, 'Paramlist')
             if 'eps' not in first('Paramlist') and cur_token in follow('Paramlist'):
@@ -379,11 +379,12 @@ def F1():
 def E2():
     if case1('['):
         if case1(']'):
-            # s_ptr()
+            s_ptr()
             return success()
         else:
             error(1, ']')
     if case3('E2'):
+        s_var()
         return success()
     return failure()
 
