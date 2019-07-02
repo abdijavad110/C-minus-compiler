@@ -624,6 +624,7 @@ def default_stmt():
                 break
         return success()
     if case3('Defaultstmt'):
+        c_repair_default()
         return success()
     return failure()
 

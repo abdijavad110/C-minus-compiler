@@ -467,4 +467,4 @@ def check_type(opr1, opr2):
     pass
 
 def c_repair_default():
-    PB.addInstruction('JP', PB.line, None, None)
+    PB.setInstruction('JP', PB.line, None, None, PB.line-1)
