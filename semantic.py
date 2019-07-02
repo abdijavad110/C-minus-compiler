@@ -57,8 +57,12 @@ def s_ptr():
             # s_addArraySize()
             # stack.pop(1)
             sym_table.add('int*', stack.get(0), depth=depth)
+	    temp = function_args_stack.get()
+            temp += 1
+            function_args_stack.pop(1)
+            function_args_stack.push(temp)
             # sym_table.var_address += 4 * (stack.get() - 1)
-            function_args += 1
+            # function_args += 1
     else:
         print('illegal type of void')
     stack.pop(2)
