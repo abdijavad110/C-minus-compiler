@@ -243,8 +243,7 @@ def c_computeIndex():
     stack.pop(1)
     temp4 = sym_table.getTemp()
     check_type(stack.get(), temp3)
-    check_type(stack.get(), temp3)
-    PB.addInstruction('ADD', stack.get(), temp3, temp4)
+    PB.addInstruction('ADD', '#' + str(stack.get()), temp3, temp4)
     stack.pop(1)
     stack.push('@' + str(temp4))
 
