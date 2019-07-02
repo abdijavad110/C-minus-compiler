@@ -242,7 +242,7 @@ def c_computeIndex():
     PB.addInstruction('MULT', stack.get(), temp2, temp3)
     stack.pop(1)
     temp4 = sym_table.getTemp()
-    check_type(stack.get(), temp3)
+    # check_type(stack.get(), temp3)
     PB.addInstruction('ADD', '#' + str(stack.get()), temp3, temp4)
     stack.pop(1)
     stack.push('@' + str(temp4))
@@ -432,37 +432,37 @@ def have_main():
     print('main function not found!')
 
 def check_type(opr1, opr2):
-    # if type(opr1) is str:
-    #     print('fuck')
-    #     if type(opr2) is str:
-    #         return True
-    #     if opr2 < 1000:
-    #         type2 = sym_table.get_type_by_address(opr2)
-    #         if type2 == 'int*':
-    #             print('Type mismatch in operands')
-    #             return False
-    #     return True
-    #
-    # if type(opr2) is str:
-    #     if opr1 < 1000:
-    #         type2 = sym_table.get_type_by_address(opr2)
-    #         if type2 == 'int*':
-    #             print('Type mismatch in operands')
-    #             return False
-    #     return True
-    #
-    # if opr1 < 1000:
-    #     type1 = sym_table.get_type_by_address(opr1)
-    #     if(type1 == 'int*'):
-    #         print('Type mismatch in operands')
-    #         return False
-    #
-    # if opr2 < 1000:
-    #     type2 = sym_table.get_type_by_address(opr2)
-    #     if type2 == 'int*':
-    #         print('Type mismatch in operands')
-    #         return False
-    # return True
+    print('&&&&&&&&&&', opr1, opr2)
+    if type(opr1) is str:
+        if type(opr2) is str:
+            return True
+        if opr2 < 1000:
+            type2 = sym_table.get_type_by_address(opr2)
+            if type2 == 'int*':
+                print('Type mismatch in operands')
+                return False
+        return True
+
+    if type(opr2) is str:
+        if opr1 < 1000:
+            type2 = sym_table.get_type_by_address(opr2)
+            if type2 == 'int*':
+                print('Type mismatch in operands')
+                return False
+        return True
+
+    if opr1 < 1000:
+        type1 = sym_table.get_type_by_address(opr1)
+        if(type1 == 'int*'):
+            print('Type mismatch in operands')
+            return False
+
+    if opr2 < 1000:
+        type2 = sym_table.get_type_by_address(opr2)
+        if type2 == 'int*':
+            print('Type mismatch in operands')
+            return False
+    return True
     pass
 
 def c_repair_default():
